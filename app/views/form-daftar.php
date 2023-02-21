@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Selamat Datang</title>
-    <link rel="stylesheet" href="../style/style.css"/>
-    <script src="../script/jquery.js"></script>
+    <link rel="stylesheet" href="../../public/css/style.css"/>
+    <script src="../../public/js/jquery.js"></script>
     <script>
     $(document).ready(function() {
       $('input[type="checkbox"]').on('change', function() {
@@ -19,28 +19,28 @@
     <main>
     <div class="hContainer daftar">
         <h1 class="heading">Formulir Pendaftaran</h1>
-        <form class="form" action="" method="post" enctype="multipart/form-data">
+        <form class="form" action="../controllers/FormlirController.php" method="post" enctype="multipart/form-data">
             
             <h3>Program :</h3>
             <span class="note-1">*</span>
             <label for="reguler">
-            <input type="checkbox" id="reguler" name="tipe1" value="1">Umroh Reguler</label>
+            <input type="checkbox" id="reguler" name="program[]" value="1">Umroh Reguler</label>
             <label for="plus">
-            <input type="checkbox" id="plus" name="tipe2" value="2">Umroh Plus</label>
+            <input type="checkbox" id="plus" name="program[]" value="2">Umroh Plus</label>
             <br>
             <label for="quad">
-            <input type="checkbox" id="quad" name="kamar1" value="1">Quad</label>
+            <input type="checkbox" id="quad" name="kamar[]" value="1">Quad</label>
             <span class="note-1">*</span>
             <label for="triple">
-            <input type="checkbox" id="triple" name="kamar2" value="2">Triple</label>
+            <input type="checkbox" id="triple" name="kamar[]" value="2">Triple</label>
             <span class="note-1">*</span>
             <label for="double">
-            <input type="checkbox" id="double" name="kamar3" value="3">Double</label>
+            <input type="checkbox" id="double" name="kamar[]" value="3">Double</label>
             <span class="note-1">*</span>
             <br><br>
             <div class="field field_v1">
             <label for="nama" class="ha-screen-reader">Nama Lengkap</label><br>
-            <input type="text" name="nama" id="nama" class="field__input" placeholder="Isikan nama lengkap anda" required>
+            <input type="text" name="nama_lengkap" id="nama" class="field__input" placeholder="Isikan nama lengkap anda" required>
             <span class="field__label-wrap" aria-hidden="true">
                 <span class="field__label">Nama Lengkap</span>
               </span>
@@ -58,7 +58,7 @@
             <br><br>
             <div class="field field_v1">
                 <label for="ayah" class="ha-screen-reader">Nama Ayah Kandung</label><br>
-                <input type="txt" name="ayah" id="ayah" class="field__input" placeholder="Masukkan nama lengkap ayah anda" required>
+                <input type="txt" name="nama_ayah_kandung" id="ayah" class="field__input" placeholder="Masukkan nama lengkap ayah anda" required>
                 <span class="field__label-wrap" aria-hidden="true">
                     <span class="field__label">Nama Ayah Kandung</span>
                   </span>
@@ -67,7 +67,7 @@
             <br><br>
             <div class="field field_v1">
                 <label for="lahir" class="ha-screen-reader">Tempat Lahir</label><br>
-                <input type="txt" name="lahir" id="lahir" class="field__input" placeholder="Tempat lahir anda" required>
+                <input type="txt" name="tempat_lahir" id="lahir" class="field__input" placeholder="Tempat lahir anda" required>
                 <span class="field__label-wrap" aria-hidden="true">
                     <span class="field__label">Tempat Lahir Anda</span>
                   </span>
@@ -76,13 +76,13 @@
             <br><br>
             <div class="tanggal">
               <label for="dateofbirth" class="za-lahir">Tanggal Lahir</label>
-              <input type="date" name="dateofbirth" id="dateofbirth" class="tanggal-input" required>
+              <input type="date" name="tanggal_lahir" id="dateofbirth" class="tanggal-input" required>
               <span class="note-1">*</span>
               </div>
               <br>
               <div class="field field_v1">
                 <label for="passport" class="ha-screen-reader">Nomor Passport</label><br>
-                <input type="txt" name="passport" id="passport" class="field__input" placeholder="Masukkan nomor passport">
+                <input type="txt" name="no_paspor" id="passport" class="field__input" placeholder="Masukkan nomor passport">
                 <span class="field__label-wrap" aria-hidden="true">
                     <span class="field__label">Nomor Passport</span>
                   </span>
@@ -91,7 +91,7 @@
             <br><br>
             <div class="field field_v1">
               <label for="tmpt-passport" class="ha-screen-reader">Tempat Dikeluarkan Passport</label><br>
-              <input type="txt" name="tmpt-passport" id="tmpt-passport" class="field__input" placeholder="Masukkan tempat dikeluarkan passport anda">
+              <input type="txt" name="tempat_dikeluarkan_paspor" id="tmpt-passport" class="field__input" placeholder="Masukkan tempat dikeluarkan passport anda">
               <span class="field__label-wrap" aria-hidden="true">
                   <span class="field__label">Tempat Dikeluarkan Passport</span>
                 </span>
@@ -100,26 +100,26 @@
           <br><br>
           <div class="tanggal">
             <label for="tgl-passport" class="za-lahir">Tanggal Dikeluarkan Passport</label>
-            <input type="date" name="tgl-passport" id="tgl-passport" class="tanggal-input">
+            <input type="date" name="tanggal_dikeluarkan_paspor" id="tgl-passport" class="tanggal-input">
             <span class="note">(tidak wajib)</span>
             </div>
             <br>
             <div class="tanggal">
               <label for="ms-passport" class="za-lahir">Masa Berlaku Passport</label>
-              <input type="date" name="ms-passport" id="ms-passport" class="tanggal-input">
+              <input type="date" name="masa_berlaku_paspor" id="ms-passport" class="tanggal-input">
               <span class="note">(tidak wajib)</span>
               </div>
               <br>
               <h3>Jenis Kelamin :</h3>
               <span class="note-1">*</span>
               <label for="pria">
-              <input type="checkbox" id="pria" name="kelamin1" value="1">Pria</label>
+              <input type="checkbox" id="pria" name="jenis_kelamin[]" value="1">Pria</label>
               <label for="wanita">
-              <input type="checkbox" id="wanita" name="kelamin2" value="2">Wanita</label>
+              <input type="checkbox" id="wanita" name="jenis_kelamin[]" value="2">Wanita</label>
               <br><br>
               <div class="goldar">
                 <label for="bloodType"></label>
-                <select id="bloodType" name="goldar" required>
+                <select id="bloodType" name="golongan_darah" required>
                   <option value="" selected>-- Pilih Golongan Darah --</option>
                   <option value="A">A</option>
                   <option value="B">B</option>
@@ -131,7 +131,7 @@
               <br>
               <div class="goldar">
                 <label for="bloodType"></label>
-                <select id="bloodType" name="goldar" required>
+                <select id="bloodType" name="status_perkawinan" required>
                   <option value="" selected>-- Status Pernikahan --</option>
                   <option value="sudah">Sudah Menikah</option>
                   <option value="Pernah">Pernah Menikah</option>
@@ -149,21 +149,21 @@
                 <br>
                 <div class="goldar">
                 <label for="dataOption"></label>
-                <select id="kota" name="kota" required></select>
+                <select id="kota" name="kota_kabupaten" required></select>
                 <option value=""></option>
                 </div>
                 <span class="note-1">*</span>
                 <br>
                 <div class="goldar">
-                <label for="dataOption" name="kec" required></label>
-                <select id="kec"></select>
+                <label for="dataOption" name="kecamatan" required></label>
+                <select id="kec" name="kecamatan"></select>
                 <option value=""></option>
                 </div>
                 <span class="note-1">*</span>
                 <br>
                 <div class="goldar">
-                <label for="dataOption" name="kel" required></label>
-                <select id="kel"></select>
+                <label for="dataOption" name="kelurahan" required></label>
+                <select id="kel" name="kelurahan"></select>
                 <option value=""></option>
               </div>
               <span class="note-1">*</span>
@@ -207,13 +207,13 @@
                       <h3>Pendidikan Terakhir :</h3>
                       <span class="note-1">*</span>
                       <label for="sd">
-                      <input type="checkbox" id="sd" name="pen4" value="1">SD/Sederajat</label>
+                      <input type="checkbox" id="sd" name="pendidikan_terakhir[]" value="1">SD/Sederajat</label>
                       <label for="smp">
-                      <input type="checkbox" id="smp" name="pen5" value="2">SMP/Sederajat</label>
+                      <input type="checkbox" id="smp" name="pendidikan_terakhir[]" value="2">SMP/Sederajat</label>
                       <label for="sma">
-                      <input type="checkbox" id="sma" name="pen6" value="3">SMA/Sederajat</label>
+                      <input type="checkbox" id="sma" name="pendidikan_terakhir[]" value="3">SMA/Sederajat</label>
                       <label for="s1">
-                      <input type="checkbox" id="s1" name="pen7" value="4">S1/Sederajat/Lebih</label>
+                      <input type="checkbox" id="s1" name="pendidikan_terakhir[]" value="4">S1/Sederajat/Lebih</label>
                       <br>
                       <div class="field field_v1">
                         <label for="pekerjaan" class="ha-screen-reader">Pekerjaan</label><br>
@@ -244,7 +244,7 @@
                             <br><br>
                             <div class="field field_v1">
                               <label for="no_telp" class="ha-screen-reader">No Telpon Keluarga Yang Ikut</label><br>
-                              <input type="txt" name="no_telp_seluler" id="no_telp_seluler" class="field__input" placeholder="Nomor telpon keluarga yang ikut" pattern="\d*" required>
+                              <input type="txt" name="no_telp" id="no_telp_seluler" class="field__input" placeholder="Nomor telpon keluarga yang ikut" pattern="\d*" required>
                               <span class="field__label-wrap" aria-hidden="true">
                                   <span class="field__label">No Telpon Keluarga Yang ikut</span>
                                 </span>
@@ -299,12 +299,12 @@
                                   <label for="file"></label>
                                   <span>Foto 3X4 :</span>
                                   <span class="note-1">*</span>
-                                  <input type="file" id="file" name="file" class="file-input" required>
+                                  <input type="file" id="file" name="foto" class="file-input" required>
                                       <a href="table_jadwal.html"><button href="table_jadwal.html" class="kirim" type="submit"  name ="submit" value="submit">Kirim</button></a>
         </form>
         <a href="pendaftaran.html"><button class="bBtn">Kembali</button></a>
         <nav class="sidebar">
-          <a href="profile.html"><img class="user-logo" src="../asset/icon-user.png" alt="user-logo" href="../index.html"></a>  
+          <a href="profile.html"><img class="user-logo" src="../img/icon-user.png" alt="user-logo" href="../index.html"></a>  
             <ul class="nav-list">
                 <li class="list-item"><a class="login" href="login.html">Login/Daftar</a></li>
                 <li class="list-item"><a class="fa" href="galeri.html">Galeri</a></li>
@@ -316,14 +316,14 @@
               </ul>
         </nav>
         <nav class="wrapper">
-          <a href="../index.html"><img class="img-logo" src="../asset/LogoItkontamaTravelOrange2022.png" alt="Logo-icon"></a>
+          <a href="../index.html"><img class="img-logo" src="../img/LogoItkontamaTravelOrange2022.png" alt="Logo-icon"></a>
             <button class="hamburger">
                 <div class="bar"></div>
             </button>
         </nav>
     </div>
 </main>
-<script src="../script/script.js"></script>
-<script src="../script/api/wilayah.js"></script>
+<script src="../../public/js/script.js"></script>
+<script src="../api/lokasi.js"></script>
 </body>
 </html>

@@ -73,9 +73,9 @@ require_once "../models/FormulirModel.php";
         $no_telp_rumah = $_POST['no_telp_rumah'];
         $no_telp_seluler = $_POST['no_telp_seluler'];
 
-        $pendidikan = $_POST['pendidikan_terakhir'] ?? array(); // inisialisasi dengan array kosong jika pendidikan tidak terdefinisi
+        $pendidikan_terakhir = $_POST['pendidikan_terakhir'] ?? array(); // inisialisasi dengan array kosong jika pendidikan tidak terdefinisi
 
-        foreach ($pendidikan as $value) {
+        foreach ($pendidikan_terakhir as $value) {
         if ($value == '1') {
             // Checkbox SD/Sederajat dipilih
             // Lakukan sesuatu, misalnya:
