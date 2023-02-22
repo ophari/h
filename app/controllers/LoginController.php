@@ -9,6 +9,7 @@ $result = $user->doLogin();
 
 if ($result) {
     session_start();
+    $_SESSION['id_users'] = $result['id_users'];
     $_SESSION['username'] = $result['username'];
     $_SESSION['level'] = $result['level'];
 
@@ -18,7 +19,7 @@ if ($result) {
     setcookie('level', $result['level'], $expiry);
 
     if ($_SESSION['level'] == 'users') {
-        header('location: ../views/form-daftar.html');
+        header('location: ../views/pendaftaran.php');
     } elseif ($_SESSION['level'] == 'admin') {
         header("location: ../views/admin.html");
     }

@@ -38,11 +38,12 @@ class Formulir extends Database{
     private $foto;
     private $conn;
 
-    public function __construct( $program, $kamar, $nama_lengkap, $nik, $nama_ayah_kandung, $tempat_lahir, $tanggal_lahir, $no_paspor, $tempat_dikeluarkan_paspor, $tanggal_dikeluarkan_paspor, $masa_berlaku_paspor, $jenis_kelamin, $golongan_darah, $status_perkawinan, $provinsi, $kota_kabupaten, $kecamatan, $kelurahan, $jalan, $email, $no_telp_rumah, $no_telp_seluler, $pendidikan_terakhir, $pekerjaan, $keluarga_yg_ikut, $hubungan, $no_telp, $informasi_pendaftaran, $penyakit_kronis, $keluarga_yg_bisa_dihubungi, $hubungan_keluarga, $no_telp_keluarga, $foto)
+
+    public function __construct($id_users, $program, $kamar, $nama_lengkap, $nik, $nama_ayah_kandung, $tempat_lahir, $tanggal_lahir, $no_paspor, $tempat_dikeluarkan_paspor, $tanggal_dikeluarkan_paspor, $masa_berlaku_paspor, $jenis_kelamin, $golongan_darah, $status_perkawinan, $provinsi, $kota_kabupaten, $kecamatan, $kelurahan, $jalan, $email, $no_telp_rumah, $no_telp_seluler, $pendidikan_terakhir, $pekerjaan, $keluarga_yg_ikut, $hubungan, $no_telp, $informasi_pendaftaran, $penyakit_kronis, $keluarga_yg_bisa_dihubungi, $hubungan_keluarga, $no_telp_keluarga, $foto)
     {
         $database = new Database();
         $this->conn = $database->getConnection();
-        // $this->id_users = $id_users;
+        $this->id_users = $id_users;
         $this->program = $program;
         $this->kamar = $kamar;
         $this->nama_lengkap = $nama_lengkap;
@@ -79,7 +80,7 @@ class Formulir extends Database{
     }
 
     public function Tambah_data(){
-      $query ="INSERT INTO formulir VALUES ('', '".implode(",", $this->program)."', '".implode(",", $this->kamar)."', 
+      $query ="INSERT INTO formulir VALUES ('$this->id_users', '".implode(",", $this->program)."', '".implode(",", $this->kamar)."', 
       '$this->nama_lengkap', '$this->nik', '$this->nama_ayah_kandung', '$this->tempat_lahir', '$this->tanggal_lahir',
       '$this->no_paspor', '$this->tempat_dikeluarkan_paspor', '$this->tanggal_dikeluarkan_paspor', '$this->masa_berlaku_paspor',
       '".implode(",", $this->jenis_kelamin)."', '$this->golongan_darah', '$this->status_perkawinan', '$this->provinsi', '$this->kota_kabupaten',
@@ -98,6 +99,6 @@ if (mysqli_query($this->conn, $query)) {
   }
     }
     
-    
+   
     
 }

@@ -17,17 +17,17 @@
         <nav class="sidebar">
             <img class="user-logo" src="./asset/icon-user.png" alt="user-logo" href="index.html">
             <ul class="nav-list">
-                <li class="list-item"><a class="login" href="./login.php">Login/Daftar</a></li>
-                <li class="list-item"><a class="fa" href="./galeri.php">Galeri</a></li>
-                <li class="list-item"><a class="fa" href="./kontak.php">Kontak</a></li>
-                <li class="list-item"><a class="fa" href="./pendaftaran.php">Daftar Haji & Umroh</a></li>
-                <li class="list-item"><a class="fa" href="./panduan.php">Panduan</a></li>
-                <li class="list-item"><a class="fa tentang-kami" href="./tentang-kami.php">Tentang Kami</a></li>
+                <li class="list-item"><a class="login" href="login.php">Login/Daftar</a></li>
+                <li class="list-item"><a class="fa" href="galeri.php">Galeri</a></li>
+                <li class="list-item"><a class="fa" href="kontak.php">Kontak</a></li>
+                <li class="list-item"><a class="fa" href="pendaftaran.php">Daftar Haji & Umroh</a></li>
+                <li class="list-item"><a class="fa" href="panduan.php">Panduan</a></li>
+                <li class="list-item"><a class="fa tentang-kami" href="tentang-kami.php">Tentang Kami</a></li>
                 <li class="list-item"><a class="logout" href="../controllers/logout.php">Logout</a></li>
               </ul>
         </nav>
         <nav class="wrapper">
-          <a href="../../index.html"><img class="img-logo" src="./asset/LogoItkontamaTravelOrange2022.png" alt="Logo-icon"></a>
+          <a href="../../index.php"><img class="img-logo" src="./asset/LogoItkontamaTravelOrange2022.png" alt="Logo-icon"></a>
             <button class="hamburger">
                 <div class="bar"></div>
             </button>

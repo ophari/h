@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once "../core/connection.php";
 class User_model extends Database {
     private $conn;
@@ -19,6 +20,7 @@ class User_model extends Database {
         if (mysqli_num_rows($result) > 0) {
             $user = mysqli_fetch_assoc($result);
             if (password_verify($this->password, $user['password'])) {
+                $_SESSION['id_users'] = true;
                 return $user;
             } else {
                 return false;
