@@ -24,7 +24,7 @@
               </ul>
         </nav>
         <nav class="wrapper">
-          <a href="index.html"><img class="img-logo" src="../apps/img/LogoItkontamaTravelOrange2022.png" alt="Logo-icon"></a>
+          <a href="index.html"><img class="img-logo" src="../app/img/LogoItkontamaTravelOrange2022.png" alt="Logo-icon"></a>
             <button class="hamburger">
                 <div class="bar"></div>
             </button>

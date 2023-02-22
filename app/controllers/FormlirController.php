@@ -108,6 +108,21 @@ require_once "../models/FormulirModel.php";
         $hubungan_keluarga = $_POST['hubungan_keluarga'];
         $no_telp_keluarga = $_POST['no_telp_keluarga'];
         $foto = $_FILES['foto'];
+
+  // Mendapatkan nama file
+  $fileName = $foto['name'];
+
+  // Mendapatkan ukuran file
+  $fileSize = $foto['size'];
+
+  // Mendapatkan jenis file
+  $fileType = $foto['type'];
+
+  // Mendapatkan path file sementara
+  $fileTemp = $foto['tmp_name'];
+
+  // Memindahkan file dari path sementara ke lokasi tujuan
+  move_uploaded_file($fileTemp, "../img/" . $fileName);
        
         
     $formulir = new Formulir( $program, $kamar, $nama_lengkap, $nik, $nama_ayah_kandung, $tempat_lahir, $tanggal_lahir, $no_paspor, $tempat_dikeluarkan_paspor, $tanggal_dikeluarkan_paspor, $masa_berlaku_paspor, $jenis_kelamin, $golongan_darah, $status_perkawinan, $provinsi, $kota_kabupaten, $kecamatan, $kelurahan, $jalan, $email, $no_telp_rumah, $no_telp_seluler, $pendidikan_terakhir, $pekerjaan, $keluarga_yg_ikut, $hubungan, $no_telp, $informasi_pendaftaran, $penyakit_kronis, $keluarga_yg_bisa_dihubungi, $hubungan_keluarga, $no_telp_keluarga, $foto);
