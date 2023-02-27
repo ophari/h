@@ -1,11 +1,3 @@
-<?php
-session_start();
-    if(!isset($_SESSION['id_users'])) {
-      echo "<script>alert('Anda harus login terlebih dahulu');window.location='../user/login.html';</script>";
-      exit;
-  }
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,14 +6,6 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Selamat Datang</title>
     <link rel="stylesheet" href="../../core/style/style.css"/>
-    <script src="../script/jquery.js"></script>
-    <script>
-    $(document).ready(function() {
-      $('input[type="checkbox"]').on('change', function() {
-        $('input[name="' + this.name + '"]').not(this).prop('checked', false);
-            });
-        });
-    </script>
 </head>
 <body>
     <main>
@@ -32,18 +16,18 @@ session_start();
             <h3>Program :</h3>
             <span class="note-1">*</span>
             <label for="reguler">
-            <input type="checkbox" id="reguler" name="program[]" value="1">Umroh Reguler</label>
+            <input type="radio" id="reguler" name="program" value="1">Umroh Reguler</label>
             <label for="plus">
-            <input type="checkbox" id="plus" name="program[]" value="2">Umroh Plus</label>
+            <input type="radio" id="plus" name="program" value="2">Umroh Plus</label>
             <br>
             <label for="quad">
-            <input type="checkbox" id="quad" name="kamar[]" value="1">Quad</label>
+            <input type="radio" id="quad" name="kamar" value="4">Quad</label>
             <span class="note-1">*</span>
             <label for="triple">
-            <input type="checkbox" id="triple" name="kamar[]" value="2">Triple</label>
+            <input type="radio" id="triple" name="kamar" value="3">Triple</label>
             <span class="note-1">*</span>
             <label for="double">
-            <input type="checkbox" id="double" name="kamar[]" value="3">Double</label>
+            <input type="radio" id="double" name="kamar" value="2">Double</label>
             <span class="note-1">*</span>
             <br><br>
             <div class="field field_v1">
@@ -90,7 +74,7 @@ session_start();
               <br>
               <div class="field field_v1">
                 <label for="passport" class="ha-screen-reader">Nomor Passport</label><br>
-                <input type="txt" name="no_paspor" id="passport" class="field__input" placeholder="Masukkan nomor passport">
+                <input type="txt" name="no_pasport" id="passport" class="field__input" placeholder="Masukkan nomor passport">
                 <span class="field__label-wrap" aria-hidden="true">
                     <span class="field__label">Nomor Passport</span>
                   </span>
@@ -121,9 +105,9 @@ session_start();
               <h3>Jenis Kelamin :</h3>
               <span class="note-1">*</span>
               <label for="pria">
-              <input type="checkbox" id="pria" name="jenis_kelamin[]" value="1">Pria</label>
+              <input type="radio" id="pria" name="jenis_kelamin" value="1">Pria</label>
               <label for="wanita">
-              <input type="checkbox" id="wanita" name="jenis_kelamin[]" value="2">Wanita</label>
+              <input type="radio" id="wanita" name="jenis_kelamin" value="2">Wanita</label>
               <br><br>
               <div class="goldar">
                 <label for="bloodType"></label>
@@ -163,15 +147,15 @@ session_start();
                 <span class="note-1">*</span>
                 <br>
                 <div class="goldar">
-                <label for="dataOption" name="kec" required></label>
+                <label for="dataOption" required></label>
                 <select id="kec" name="kecamatan"></select>
                 <option value=""></option>
                 </div>
                 <span class="note-1">*</span>
                 <br>
                 <div class="goldar">
-                <label for="dataOption" name="kel" required></label>
-                <select id="kel" name="kelurahan"></select>
+                <label for="dataOption"required></label>
+                <select id="kel" name="kelurahan" ></select>
                 <option value=""></option>
               </div>
               <span class="note-1">*</span>
@@ -215,13 +199,13 @@ session_start();
                       <h3>Pendidikan Terakhir :</h3>
                       <span class="note-1">*</span>
                       <label for="sd">
-                      <input type="checkbox" id="sd" name="pendidikan_terakhir[]" value="1">SD/Sederajat</label>
+                      <input type="radio" id="sd" name="pendidikan_terakhir" value="1">SD/Sederajat</label>
                       <label for="smp">
-                      <input type="checkbox" id="smp" name="pendidikan_terakhir[]" value="2">SMP/Sederajat</label>
+                      <input type="radio" id="smp" name="pendidikan_terakhir" value="2">SMP/Sederajat</label>
                       <label for="sma">
-                      <input type="checkbox" id="sma" name="pendidikan_terakhir[]" value="3">SMA/Sederajat</label>
+                      <input type="radio" id="sma" name="pendidikan_terakhir" value="3">SMA/Sederajat</label>
                       <label for="s1">
-                      <input type="checkbox" id="s1" name="pendidikan_terakhir[]" value="4">S1/Sederajat/Lebih</label>
+                      <input type="radio" id="s1" name="pendidikan_terakhir" value="4">S1/Sederajat/Lebih</label>
                       <br>
                       <div class="field field_v1">
                         <label for="pekerjaan" class="ha-screen-reader">Pekerjaan</label><br>
@@ -243,7 +227,7 @@ session_start();
                           <br><br>
                           <div class="field field_v1">
                             <label for="hubungan" class="ha-screen-reader">Hubungan</label><br>
-                            <input type="txt" name="hubungan" id="hubungan" class="field__input" placeholder="Hubungan">
+                            <input type="txt" name="hubungan_keluarga" id="hubungan" class="field__input" placeholder="Hubungan">
                             <span class="field__label-wrap" aria-hidden="true">
                                 <span class="field__label">Hubungan</span>
                               </span>
@@ -252,7 +236,7 @@ session_start();
                             <br><br>
                             <div class="field field_v1">
                               <label for="no_telp" class="ha-screen-reader">No Telpon Keluarga Yang Ikut</label><br>
-                              <input type="txt" name="no_telp" id="no_telp_seluler" class="field__input" placeholder="Nomor telpon keluarga yang ikut" pattern="\d*" required>
+                              <input type="txt" name="no_telp" id="no_telp_seluler" class="field__input" placeholder="Nomor telpon keluarga yang ikut" pattern="\d*">
                               <span class="field__label-wrap" aria-hidden="true">
                                   <span class="field__label">No Telpon Keluarga Yang ikut</span>
                                 </span>
@@ -307,12 +291,12 @@ session_start();
                                   <label for="file"></label>
                                   <span>Foto 3X4 :</span>
                                   <span class="note-1">*</span>
-                                  <input type="file" id="file" name="foto" class="file-input" required>
+                                  <input type="file" id="file" name="file" class="file-input" required>
                                       <a href="table_jadwal.html"><button href="table_jadwal.html" class="kirim" type="submit"  name ="submit" value="submit">Kirim</button></a>
         </form>
         <a href="pendaftaran.html"><button class="bBtn">Kembali</button></a>
         <nav class="sidebar">
-          <a href="profile.html"><img class="user-logo" src="../../core/asset/icon-user.png" alt="user-logo" href="../index.html"></a>  
+          <a href="profile.php"><img class="user-logo" src="../../core/asset/icon-user.png" alt="user-logo" href="../../index.php"></a>  
             <ul class="nav-list">
                 <li class="list-item"><a class="login" href="login.html">Login/Daftar</a></li>
                 <li class="list-item"><a class="fa" href="galeri.html">Galeri</a></li>
@@ -324,7 +308,7 @@ session_start();
               </ul>
         </nav>
         <nav class="wrapper">
-          <a href="../../index.php"><img class="img-logo" src="../../core/asset/LogoItkontamaTravelOrange2022.png" alt="Logo-icon"></a>
+          <a href="../../index.php"><img class="img-logo" src="../../core./asset/LogoItkontamaTravelOrange2022.png" alt="Logo-icon"></a>
             <button class="hamburger">
                 <div class="bar"></div>
             </button>

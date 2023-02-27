@@ -18,13 +18,13 @@ if ($result) {
     setcookie('level', $result['level'], $expiry);
 
     if ($_SESSION['level'] == 'users') {
-        header('location: ../index.php');
+        header('location: ../index.html');
         exit();
     } elseif ($_SESSION['level'] == 'admin') {
         header("location: ../views/admin.html");
         exit();
     }
 } else {
-    echo "<script>alert('Username atau password salah');window.location='../views/login.html';</script>";
+    echo "<script>alert('Username atau password salah');window.location='../../index.html';</script>";
     exit();
 }

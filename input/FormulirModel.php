@@ -83,30 +83,26 @@ class Formulir extends Database{
 
     public function Tambah_data(){
 
-      
- $id_formulir = bin2hex(random_bytes(16)); // menghasilkan string acak dengan panjang 32 karakter
-$check_id_formulir_query = "SELECT * FROM formulir WHERE id_formulir='$id_formulir' LIMIT 1";
-$result = mysqli_query($this->conn, $check_id_formulir_query);
-$formulir = mysqli_fetch_assoc($result);
+      $id_formulir = bin2hex(random_bytes(16)); // menghasilkan string acak dengan panjang 32 karakter
+      $check_id_formulir_query = "SELECT * FROM formulir WHERE id_formulir='$id_formulir' LIMIT 1";
+      $result = mysqli_query($this->conn, $check_id_formulir_query);
+      $formulir = mysqli_fetch_assoc($result);
 
-// cek apakah id_formulir sudah ada di database
-// jika sudah, buat id_formulir baru sampai id_formulir unik
-while ($formulir) {
-    $id_formulir = bin2hex(random_bytes(16));
-    $check_id_formulir_query = "SELECT * FROM formulir WHERE id_formulir='$id_formulir' LIMIT 1";
-    $result = mysqli_query($this->conn, $check_id_formulir_query);
-    $formulir = mysqli_fetch_assoc($result);
-}
+      // cek apakah id_formulir sudah ada di database
+      // jika sudah, buat id_formulir baru sampai id_formulir unik
+      while ($formulir) {
+          $id_formulir = bin2hex(random_bytes(16));
+          $check_id_formulir_query = "SELECT * FROM formulir WHERE id_formulir='$id_formulir' LIMIT 1";
+          $result = mysqli_query($this->conn, $check_id_formulir_query);
+          $formulir = mysqli_fetch_assoc($result);
+      }
 
-// jika id_formulir sudah unik, si
-
-      
-      $query ="INSERT INTO formulir VALUES ('$this->id_users','$id_formulir', '".implode(",", $this->program)."', '".implode(",", $this->kamar)."', 
+      $query ="INSERT INTO formulir VALUES ('$this->id_users','$id_formulir', '$this->program', '$this->kamar', 
       '$this->nama_lengkap', '$this->nik', '$this->nama_ayah_kandung', '$this->tempat_lahir', '$this->tanggal_lahir',
       '$this->no_paspor', '$this->tempat_dikeluarkan_paspor', '$this->tanggal_dikeluarkan_paspor', '$this->masa_berlaku_paspor',
-      '".implode(",", $this->jenis_kelamin)."', '$this->golongan_darah', '$this->status_perkawinan', '$this->provinsi', '$this->kota_kabupaten',
+      '$this->jenis_kelamin', '$this->golongan_darah', '$this->status_perkawinan', '$this->provinsi', '$this->kota_kabupaten',
       '$this->kecamatan', '$this->kelurahan', '$this->jalan', '$this->email', '$this->no_telp_rumah', '$this->no_telp_seluler',
-      '".implode(",", $this->pendidikan_terakhir)."', '$this->pekerjaan', '$this->keluarga_yg_ikut', '$this->hubungan', '$this->no_telp',
+      '$this->pendidikan_terakhir', '$this->pekerjaan', '$this->keluarga_yg_ikut', '$this->hubungan', '$this->no_telp',
       '$this->informasi_pendaftaran','$this->penyakit_kronis', '$this->keluarga_yg_bisa_dihubungi', '$this->hubungan_keluarga',
       '$this->no_telp_keluarga', '$this->foto','$this->timestamp')";
 
