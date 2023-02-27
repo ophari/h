@@ -1,3 +1,21 @@
+<?php
+session_start();
+if(!isset($_SESSION['id_users'])) {
+  echo "<script>alert('Anda harus login terlebih dahulu');window.location='../user/login.html';</script>";
+  exit;
+}
+
+// koneksi ke database
+$conn = mysqli_connect("localhost", "root", "", "db_haji_umroh");
+
+// mengambil data profil pengguna dari database
+$id_users = $_SESSION['id_users'];
+$query = "SELECT u.username, u.email, f.nama_lengkap, f.nik FROM users u JOIN formulir f ON u.id_users = f.id_users WHERE u.id_users='$id_users' LIMIT 1";
+$result = mysqli_query($conn, $query);
+$user = mysqli_fetch_assoc($result);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,15 +31,15 @@
     <div class="hContainer profile">
         <div class="pContainer">
             <div class="horizontal"></div>
-                <h1>Username</h1>
-                <p>emailanda123@gmail.com</p>
+                <h1><?php echo $user['username']; ?></h1>
+                <p><?php echo $user['email']; ?></p>
                 <div class="search-container">
                     <input type="text" placeholder="Search.." name="search">
                     <button type="submit"><i class="uil uil-search"></i></button>
                 </div>
                 <div class="block block-1">
-                  <p>123456778910</p>
-                  <p>diffary dzikri khattab</p>
+                  <p><?php echo $user['nik']; ?></p>
+                  <p><?php echo $user['nama_lengkap']; ?></p>
                    <a href="#">
                       <button class="tnm tnm-1">
                         <p>Cek Data Jamaah</p>
@@ -45,6 +63,9 @@
                 <br><br>
                 <div class="block block-3"></div>
         </div>
+
+
+
         <nav class="sidebar">
           <a href="profile.html"><img class="user-logo" src="../../core/asset/icon-user.png" alt="user-logo" href="../index.html"></a>  
             <ul class="nav-list">
