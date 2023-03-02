@@ -13,7 +13,7 @@ require_once "../connection.php";
         $this->email = htmlspecialchars(strip_tags($email));
         $this->password = password_hash(htmlspecialchars(strip_tags($password)), PASSWORD_DEFAULT);
         }
-
+        
     public function register() {
       $email_check_query = "SELECT * FROM users WHERE email='$this->email' LIMIT 1";
       $result = mysqli_query($this->conn, $email_check_query);

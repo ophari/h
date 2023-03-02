@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Selamat Datang</title>
-    <link rel="stylesheet" href="../../style/style.css"/>
-    <script src="../../script/jquery.js"></script>
+    <link rel="stylesheet" href="../../../core/style/style.css"/>
+    <script src="../../../core/script/jquery.js"></script>
     <script>
     $(document).ready(function() {
       $('input[type="checkbox"]').on('change', function() {
@@ -304,7 +304,7 @@
         </form>
         <a href="dashboard_user.html"><button class="bBtn">Kembali</button></a>
         <nav class="sidebar">
-          <img class="user-logo" src="../../asset/icon-user.png" alt="user-logo" href="../welcome.html">
+          <img class="user-logo" src="../../../core/asset/icon-user.png" alt="user-logo" href="../welcome.html">
             <ul class="nav-list">
                 <li class="list-item"><a class="login" href="login.html">Login/Daftar</a></li>
                 <li class="list-item"><a class="fa" href="galeri.html">Galeri</a></li>
@@ -316,14 +316,14 @@
               </ul>
         </nav>
         <nav class="wrapper">
-          <a href="../welcome.html"><img class="img-logo" src="../../asset/LogoItkontamaTravelOrange2022.png" alt="Logo-icon"></a>
+          <a href="../welcome.html"><img class="img-logo" src="../../../core/asset/LogoItkontamaTravelOrange2022.png" alt="Logo-icon"></a>
             <button class="hamburger">
                 <div class="bar"></div>
             </button>
         </nav>
     </div>
 </main>
-<script src="../../script/script.js"></script>
-<script src="../../script/api/wilayah.js"></script>
+<script src="../../../core/script/script.js"></script>
+<script src="../../../core/script/api/wilayah.js"></script>
 </body>
 </html>

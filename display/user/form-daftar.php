@@ -291,20 +291,20 @@
                                   <label for="file"></label>
                                   <span>Foto 3X4 :</span>
                                   <span class="note-1">*</span>
-                                  <input type="file" id="file" name="file" class="file-input" required>
+                                  <input type="file" id="file" name="foto" class="file-input" required>
                                       <a href="table_jadwal.html"><button href="table_jadwal.html" class="kirim" type="submit"  name ="submit" value="submit">Kirim</button></a>
         </form>
         <a href="pendaftaran.html"><button class="bBtn">Kembali</button></a>
         <nav class="sidebar">
-          <a href="profile.php"><img class="user-logo" src="../../core/asset/icon-user.png" alt="user-logo" href="../../index.php"></a>  
+          <a href="profile.php"><img class="user-logo" src="../../core/asset/icon-user.png" alt="user-logo" href="../index.html"></a>  
             <ul class="nav-list">
-                <li class="list-item"><a class="login" href="login.html">Login/Daftar</a></li>
+                <li class="list-item"><a class="login" href="login.php">Login/Daftar</a></li>
                 <li class="list-item"><a class="fa" href="galeri.html">Galeri</a></li>
                 <li class="list-item"><a class="fa" href="kontak.html">Kontak</a></li>
-                <li class="list-item"><a class="fa" href="pendaftaran.html">Daftar Haji & Umroh</a></li>
+                <li class="list-item"><a class="fa" href="pendaftaran.php">Daftar Haji & Umroh</a></li>
                 <li class="list-item"><a class="fa" href="panduan.html">Panduan</a></li>
                 <li class="list-item"><a class="fa tentang-kami" href="tentang-kami.html">Tentang Kami</a></li>
-                <li class="list-item"><a class="logout" href="#">Logout</a></li>
+                <li class="list-item"><a class="logout" href="../../controller/logout.php">Logout</a></li>
               </ul>
         </nav>
         <nav class="wrapper">
