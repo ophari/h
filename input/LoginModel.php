@@ -1,58 +1,43 @@
-<?php
-require_once "../connection.php";
-session_start();
-class User_model extends Database {
-    private $conn;
-    private $username;
-    private $password;
+<?php 
+class LoginModel extends Database{
 
-    public function __construct($username, $password) {
-        $database = new Database();
-        $this->conn = $database->getConnection();
-        $this->username = $username;
-        $this->password = $password;
-    }
+  
+  public function __construct() {
+    $db = new Database;
+    $this->conn = $db->conn;
+  }
+  
+  public function login($username, $password) {
+    $username = mysqli_real_escape_string($this->conn, $username);
+    $query = "SELECT * FROM users WHERE username = '$username'";
+    $result = mysqli_query($this->conn, $query);
 
-
-    public function doLogin() {
-        $sql = "SELECT * FROM users WHERE username = '$this->username'";
-        $result = mysqli_query($this->conn, $sql);
+    if (mysqli_num_rows($result) == 1) {
+        $row = mysqli_fetch_assoc($result);
     
-        if (mysqli_num_rows($result) > 0) {
-            $user = mysqli_fetch_assoc($result);
-            if ($user['level'] == 'admin') {
-                // jika level adalah admin, tidak perlu verifikasi password
-                $_SESSION['id_users'] = $user['id_users'];
-                return $user;
-            } elseif (password_verify($this->password, $user['password'])) {
-                // jika level adalah non-admin, lakukan verifikasi password
-                $_SESSION['id_users'] = $user['id_users'];
-                return $user;
-            } else {
-                return false;
-            }
+        if($row['level'] == 'admin') {
+            return $row;
+        }
+    
+        if (password_verify($password, $row['password'])) {
+            return $row;
         } else {
             return false;
         }
+    } else {
+        return false;
     }
-    // public function doLogin() {
-    //     $sql = "SELECT * FROM users WHERE username = '$this->username'";
-    //     $result = mysqli_query($this->conn, $sql);
-    
-    //     if (mysqli_num_rows($result) > 0) {
-    //         $user = mysqli_fetch_assoc($result);
-    //         if (password_verify($this->password, $user['password'])) {
-    //             // tambahkan session id_users saat login berhasil
-    //             $_SESSION['id_users'] = $user['id_users'];
-    //             return $user;
-    //         } else {
-    //             return false;
-    //         }
-    //     } else {
-    //         return false;
-    //     }
-    // }
-    
 }
 
-?>
+public function getUserById($id) {
+    $query = "SELECT * FROM users WHERE id_users = '$id'";
+    $result = mysqli_query($this->conn, $query);
+
+    if (mysqli_num_rows($result) == 1) {
+        $row = mysqli_fetch_assoc($result);
+        return $row;
+    } else {
+        return false;
+    }
+}
+}

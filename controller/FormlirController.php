@@ -4,7 +4,7 @@ if (isset($_POST['submit'])) {
   session_start();
   
   // ambil id_user dari session
-  $id_users = $_SESSION['id_users'];
+        $id_users = $_SESSION['id_users'];
         $program = $_POST['program'];
         $kamar = $_POST['kamar'];
         $nama_lengkap = $_POST['nama_lengkap'];
@@ -37,22 +37,17 @@ if (isset($_POST['submit'])) {
         $keluarga_yg_bisa_dihubungi = $_POST['keluarga_yg_bisa_dihubungi'];
         $hubungan_keluarga = $_POST['hubungan_keluarga'];
         $no_telp_keluarga = $_POST['no_telp_keluarga'];
-        $foto = $_FILES['foto'];
 
-  // Mendapatkan nama file
-  $fileName = $foto['name'];
+        $foto = $_FILES["foto"]["name"];
+        $ukuran_file = $_FILES["foto"]["size"];
+        $tmp_file = $_FILES["foto"]["tmp_name"];
+       
+        // tentukan lokasi penyimpanan file
+        $dir_upload = "../core/img/";
+        $target_file = $dir_upload . $foto;
+        move_uploaded_file($tmp_file, $target_file);
 
-  // Mendapatkan ukuran file
-  $fileSize = $foto['size'];
 
-  // Mendapatkan jenis file
-  $fileType = $foto['type'];
-
-  // Mendapatkan path file sementara
-  $fileTemp = $foto['tmp_name'];
-
-  // Memindahkan file dari path sementara ke lokasi tujuan
-  move_uploaded_file($fileTemp, "../core/img/" . $fileName);
 
   $timestamp = date('Y-m-d H:i:s');
  

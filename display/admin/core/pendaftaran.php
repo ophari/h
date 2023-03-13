@@ -52,6 +52,7 @@
             </button>
         </nav>
     </div>
+ 
 </main>
 <script src="../../../core/script/script.js"></script>
 </body>

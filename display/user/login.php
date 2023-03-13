@@ -1,3 +1,10 @@
+<?php
+session_start();
+require_once "../LinkModelController.php";
+$loginController = new LoginController();
+$loginController->login($_POST['username'], $_POST['password']);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,9 +16,9 @@
 </head>
 <body>
     <div> 
-        <div class="center">
+       <div class="center">
   <h1>Login</h1>
-  <form action="../../controller/LoginController.php" method="post">
+  <form  method="post">
     <div class="txt_field">
       <input type="text" placeholder="Username" name="username" required>
       <span></span>
@@ -22,32 +29,32 @@
       <span></span>
       <label>Password</label>
     </div>
-    <input type="submit" name="sumbit" value="Login">
+    <input type="submit" name="submit" value="Login">
     <div class="signup_link">
-      Tidak punya akun? <a href="register.php">Register</a>
+      Tidak punya akun? <a href="register.html">Register</a>
     </div>
   </form>
 </div>
   <main>
     <div class="hContainer login-img">
         <div class="kotak-login"></div>
-        <nav class="sidebar">
-          <a href="profile.php"><img class="user-logo" src="../../core/asset/icon-user.png" alt="user-logo" href="../index.html"></a>  
-            <ul class="nav-list">
-                <li class="list-item"><a class="login" href="login.php">Login/Daftar</a></li>
-                <li class="list-item"><a class="fa" href="galeri.html">Galeri</a></li>
-                <li class="list-item"><a class="fa" href="kontak.html">Kontak</a></li>
-                <li class="list-item"><a class="fa" href="pendaftaran.php">Daftar Haji & Umroh</a></li>
-                <li class="list-item"><a class="fa" href="panduan.html">Panduan</a></li>
-                <li class="list-item"><a class="fa tentang-kami" href="tentang-kami.html">Tentang Kami</a></li>
-                <li class="list-item"><a class="logout" href="../../controller/logout.php">Logout</a></li>
+          <nav class="sidebar">
+            <img class="user-logo" src="../../core/asset/icon-user.png" alt="user-logo" href="../welcome.html"> 
+              <ul class="nav-list">
+                  <li class="list-item"><a class="login" href="login.html">Login/Daftar</a></li>
+                  <li class="list-item"><a class="fa" href="galeri.html">Galeri</a></li>
+                  <li class="list-item"><a class="fa" href="kontak.html">Kontak</a></li>
+                  <li class="list-item"><a class="fa" href="pendaftaran.html">Daftar Haji & Umroh</a></li>
+                  <li class="list-item"><a class="fa" href="dashboard.html">Dashboard</a></li>
+                  <li class="list-item"><a class="fa tentang-kami" href="tentang-kami.html">Tentang Kami</a></li>
+                  <li class="list-item"><a class="logout" href="#">Logout</a></li>
               </ul>
-        </nav>
-        <nav class="wrapper">
-          <a href="../../index.php"><img class="img-logo" src="../../core/asset/LogoItkontamaTravelOrange2022.png" alt="Logo-icon"></a>
-            <button class="hamburger">
-                <div class="bar"></div>
-            </button>
+          </nav>
+             <nav class="wrapper">
+                <a href="../welcome.php"><img class="img-logo" src="../../core/asset/LogoItkontamaTravelOrange2022.png" alt="Logo-icon"></a> 
+                  <button class="hamburger">
+                    <div class="bar"></div>
+                  </button>
           </nav>
     </div>
   </main>

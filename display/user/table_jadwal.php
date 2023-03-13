@@ -1,6 +1,9 @@
 <?php
 session_start();
-    
+if(!isset($_SESSION['id_users'])) {
+  echo "<script>alert('Anda harus login terlebih dahulu');window.location='../user/login.php';</script>";
+  exit;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

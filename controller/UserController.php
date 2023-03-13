@@ -5,7 +5,7 @@ if (isset($_POST['submit'])) {
   $password = $_POST['password'];
   $email = $_POST['email'];
 
-  $user = new User($username, $password, $email);
+  $user = new Register($username, $password, $email);
   if ($user->register()) {
     echo "<script>alert('Berhasil registrasi, silakan login');window.location='../display/user/login.php';</script>";
   }

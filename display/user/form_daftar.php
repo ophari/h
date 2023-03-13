@@ -1,3 +1,10 @@
+<?php
+session_start();
+    if(!isset($_SESSION['id_users'])) {
+      echo "<script>alert('Anda harus login terlebih dahulu');window.location='../user/login.php';</script>";
+      exit;
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -74,7 +81,7 @@
               <br>
               <div class="field field_v1">
                 <label for="passport" class="ha-screen-reader">Nomor Passport</label><br>
-                <input type="txt" name="no_pasport" id="passport" class="field__input" placeholder="Masukkan nomor passport">
+                <input type="txt" name="no_paspor" id="passport" class="field__input" placeholder="Masukkan nomor passport">
                 <span class="field__label-wrap" aria-hidden="true">
                     <span class="field__label">Nomor Passport</span>
                   </span>
@@ -227,7 +234,7 @@
                           <br><br>
                           <div class="field field_v1">
                             <label for="hubungan" class="ha-screen-reader">Hubungan</label><br>
-                            <input type="txt" name="hubungan_keluarga" id="hubungan" class="field__input" placeholder="Hubungan">
+                            <input type="txt" name="hubungan" id="hubungan" class="field__input" placeholder="Hubungan">
                             <span class="field__label-wrap" aria-hidden="true">
                                 <span class="field__label">Hubungan</span>
                               </span>
@@ -291,20 +298,20 @@
                                   <label for="file"></label>
                                   <span>Foto 3X4 :</span>
                                   <span class="note-1">*</span>
-                                  <input type="file" id="file" name="foto" class="file-input" required>
+                                  <input type="file" id="file" name="foto" class="file-input">
                                       <a href="table_jadwal.html"><button href="table_jadwal.html" class="kirim" type="submit"  name ="submit" value="submit">Kirim</button></a>
         </form>
         <a href="pendaftaran.html"><button class="bBtn">Kembali</button></a>
         <nav class="sidebar">
-          <a href="profile.php"><img class="user-logo" src="../../core/asset/icon-user.png" alt="user-logo" href="../index.html"></a>  
+          <a href="profile.php"><img class="user-logo" src="../../core/asset/icon-user.png" alt="user-logo" href="../../index.php"></a>  
             <ul class="nav-list">
-                <li class="list-item"><a class="login" href="login.php">Login/Daftar</a></li>
+                <li class="list-item"><a class="login" href="login.html">Login/Daftar</a></li>
                 <li class="list-item"><a class="fa" href="galeri.html">Galeri</a></li>
                 <li class="list-item"><a class="fa" href="kontak.html">Kontak</a></li>
-                <li class="list-item"><a class="fa" href="pendaftaran.php">Daftar Haji & Umroh</a></li>
+                <li class="list-item"><a class="fa" href="pendaftaran.html">Daftar Haji & Umroh</a></li>
                 <li class="list-item"><a class="fa" href="panduan.html">Panduan</a></li>
                 <li class="list-item"><a class="fa tentang-kami" href="tentang-kami.html">Tentang Kami</a></li>
-                <li class="list-item"><a class="logout" href="../../controller/logout.php">Logout</a></li>
+                <li class="list-item"><a class="logout" href="#">Logout</a></li>
               </ul>
         </nav>
         <nav class="wrapper">

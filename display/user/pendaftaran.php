@@ -23,14 +23,14 @@ session_start();
               <img class="img-kotak" src="../../core/asset/umrah.png" alt="Image">
                 <div class="button-container">
                   <button class="left-button">Paket</button>
-                    <a href="../user/form-daftar.php"><button href="../user/form-daftar.php" class="right-button">Daftar</button></a>
+                    <a href="../user/form_daftar.php"><button href="../user/form_daftar.php" class="right-button">Daftar</button></a>
                 </div>
             </div>
             <div class="box">
               <img class="img-kotak" src="../../core/asset/haji2.png" alt="Image">
                 <div class="button-container">
                   <button class="left-button">Paket</button>
-                    <a href="../user/form-daftar.php"><button href="../user/form-daftar.php" class="right-button">Daftar</button></a>
+                    <a href="../user/form_daftar.php"><button href="../user/form_daftar.php" class="right-button">Daftar</button></a>
                 </div>
             </div>
             <div class="box">
