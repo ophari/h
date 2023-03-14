@@ -1,0 +1,14 @@
+/* sisanya mengambil dari galer.css */
+
+.main-image-Admin img {
+    margin-top: 20px;
+    object-fit: cover;
+    width: 1062px;
+    height: 527.31px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+}
+
+.container-Admin{
+    height: 946px;
+}

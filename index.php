@@ -28,7 +28,7 @@ $row = $controller->GetAll();
                     echo '<li class="list-item-login">' . $_SESSION['username'] . '</li>';
                 } else {
                     // tampilkan li "Login/Daftar"
-                    echo '<li class="list-item"><a class="login" href="./display/user/login.html">Login/Daftar</a></li>';
+                    echo '<li class="list-item"><a class="login" href="./display/user/login.php">Login/Daftar</a></li>';
                 }
                 ?>
                 <!-- <li class="list-item"><a class="login" href="./display/user/login.php">Login/Daftar</a></li> -->

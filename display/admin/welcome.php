@@ -45,8 +45,7 @@
                 <li class="list-item"><a class="AdminFa" href="../../display/user/register.php">Daftar</a></li>
                 <li class="list-item"><a class="AdminFa" href="core/EditHomePage.php">Edit data formulir</a></li>
                 <li class="list-item"><a class="AdminFa" href="core/galeri.php">Galeri</a></li>
-                <li class="list-item"><a class="AdminFa" href="core/galeri.php">Edit Paket</a></li>
-                <li class="list-item"><a class="AdminFa" href="core/galeri.php">Edit home page</a></li>
+                <li class="list-item"><a class="AdminFa" href="core/EditPaket.php">Edit Paket</a></li>
                 <li class="list-item"><a class="AdminFa" href="core/kontak.html">Kontak</a></li>
                 <li class="list-item"><a class="AdminFa" href="../user/form-daftar.php">Daftar Haji & Umroh</a></li>
                 <li class="list-item"><a class="AdminFa" href="core/dashboard.html">Dashboard</a></li>
