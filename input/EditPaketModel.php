@@ -12,9 +12,13 @@ public function __construct()
 public function getGambar()
 {
     $result = mysqli_query($this->conn, "SELECT * FROM gambarpaket");
-    $row = mysqli_fetch_assoc($result);
-    return $row;
+    $rows = array();
+    while ($row = mysqli_fetch_assoc($result)) {
+        $rows[] = $row;
+    }
+    return $rows;
 }
+
 
 public function updateGambar($id, $gambar_lama, $gambar_baru, $temp_file)
 {

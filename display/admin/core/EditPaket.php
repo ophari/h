@@ -12,36 +12,55 @@ $controller->Update();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Galeri</title>
     <link rel="stylesheet" href="../../../core/style/style.css"/>
-    <link rel="stylesheet" href="../../../core/style/galeri.css">
+    <link rel="stylesheet" href="../../../core/style/AdminWelcome.css">
     <link rel="stylesheet" href="../../../core/style/PaketGambar.css">
 </head>
 <body>
-    <div class="container-Admin">
-<h1>Gambar Paket</h1>
-<div class="gallery">
-  <div class="main-image-Admin">
-        <?php 
-      if(!empty($row['gambar'])){
-          echo '<img src="../../../core/GambarPaket/'.$row['gambar'].'" >';
-      } else {
-          echo '<img src="../../../core/GambarPaket/default_image.jpg">';
-      }
-      ?>
-  </div>
-</div>
-<div class="FormGaleri">
-  <form name="form1" action="" method="post" enctype="multipart/form-data">
-  <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
-  <input type="hidden" name="gambar_lama" value="<?php echo $row['gambar']; ?>">
-    File:
-    <input type="file" name="gambar" id="file" onchange="previewImage(event)" accept="image/*"/><br/>
-    <div id="imagePreview">
-      <img src="../../../core/GambarPaket/<?php echo $row['gambar'];?>" alt="Preview" style="max-width: 150px; max-height: 150px;">
+  
+<div class="container-Admin">
+ <h1>Gambar Paket</h1>
+ <table>
+    <thead>
+        <tr>
+            <th>No.</th>
+            <th>Gambar</th>
+            <th>Update</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php $no = 1;
+        foreach ($row as $r) { ?>
+            <tr>
+                <td><?= $no++ ?></td>
+                <td>
+                    <input type="hidden" name="id" value="<?php echo $r['id']; ?>">
+                    <img src="../../../core/GambarPaket/<?= $r['gambar'] ?>" alt="<?= $r['gambar'] ?>">
+                </td>
+                <td>
+                    <button type="button" onclick="openPopup(<?php echo $r['id']; ?>)" class="button-paket">Ganti</button>
+                </td>
+            </tr>
+        <?php } ?>
+    </tbody>
+</table>
+    <div id="popup" class="popup">
+<div class="popup-content">
+  <h3>Pilih gambar baru</h3>
+  <form action="" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="id" value="<?php echo $r['id']; ?>">
+    <input type="hidden" name="gambar_lama" value="<?php echo $r['gambar']; ?>">
+    <input type="file" id="file-input" name="gambar">
+    <label for="file-input" id="file-label">Pilih file</label>
+    <span id="file-name"></span>
+    <div class="popup-btns">
+      <button type="button" class="cancel" onclick="closePopup()">Batal</button>
+      <button type="submit" class="update" name="submit">Ganti</button>
     </div>
-    <input type="submit" name="submit" value="Upload"/>
   </form>
 </div>
-    </div>
+</div>
+
+  </div>
     </div>
         <nav class="sidebar">
             <a href="profile.html"><img class="user-logo" src="../../../core/asset/icon-user.png" alt="user-logo" ></a>  
@@ -68,13 +87,23 @@ $controller->Update();
 
 </script>
 <script>
-  function previewImage(event) {
-    var reader = new FileReader();
-    reader.onload = function(){
-      var output = document.getElementById('imagePreview');
-      output.innerHTML = '<img src="' + reader.result + '" alt="Preview" style="max-width: 150px; max-height: 150px;">';
-    };
-    reader.readAsDataURL(event.target.files[0]);
-  }
+function openPopup(id) {
+  document.getElementById("popup").style.display = "block";
+  document.querySelector("#popup input[name=id]").value = id;
+}
+
+function closePopup() {
+  document.getElementById("popup").style.display = "none";
+  document.querySelector("#popup input[name=id]").value = "";
+  document.querySelector("#popup input[name=gambar_lama]").value = "";
+  document.querySelector("#file-input").value = "";
+  document.querySelector("#file-name").innerHTML = "";
+}
+
+document.querySelector("#file-input").addEventListener("change", function() {
+  var filename = this.value.split("\\").pop();
+  document.querySelector("#file-name").innerHTML = filename;
+});
 </script>
+
 </html>
