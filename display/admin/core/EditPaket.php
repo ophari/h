@@ -22,7 +22,7 @@ $controller->handleRequest();
     <form action="" method="post" enctype="multipart/form-data">
       <input type="hidden" name="id" id="popup-id" value="">
       <input type="hidden" name="nama_file_lama" id="popup-gambar-lama" value="">
-      <input type="file" id="file-input" name="gambar">
+      <input type="file" id="file-input" name="gambar"  value="<?php echo $r['nama_file_lama']?>">
       <label for="file-input" id="file-label">Pilih file</label>
       <span id="file-name"></span>
       <div class="popup-btns">
@@ -57,7 +57,8 @@ foreach ($row as $r) {
             <img src="../../../core/GambarPaket/<?= $r['gambar']; ?>" alt="<?= $r['gambar'] ?>">
         </td>
         <td>
-            <button type="button" onclick="openPopup(<?= $r['id']; ?>)" class="button-paket">Ganti</button>
+        <button type="button" onclick="openPopup(<?= $r['id']; ?>, '<?= $r['gambar']; ?>')" class="button-paket">Ganti</button>
+
         </td>
     </tr>
 <?php 
