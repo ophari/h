@@ -1,3 +1,7 @@
+<?php
+include('../../../connection.php');
+include_once('../../../input/DashboardModel.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,16 +17,28 @@
     <div class="hContainer profile">
         <div class="pContainer">
             <div class="horizontal"></div>
+            <?php
+          $users = new admin();
+          $id_users = $_GET['id_users'] ?? null; 
+  $result = $users->getData();
+                                          if($result)
+                                      {
+                                          foreach($result as $row)
+                                          {
+                                            ?>
                 <h1>Pembayaran</h1>
-                <a href="dashboard_user.html">
+                <a href="dashboard_user.php?id_users=<?php echo $row['id_users']; ?>">
                     <button class="tnm tnm-5">
                       <p>Data Jamaah</p>
                     </button>
-                </a>
-                <div class="search-container">
-                    <input type="text" placeholder="Search.." name="search">
-                    <button type="submit"><i class="uil uil-search"></i></button>
-                </div>
+                </a><?php
+              }
+  }
+  else
+  {
+      echo "No Record Found";
+  }
+                                    ?>
                 <div class="block block-1">
                   <p>123456778910</p>
                   <p>diffary dzikri khattab</p>
@@ -75,7 +91,7 @@
               </ul>
         </nav>
         <nav class="wrapper">
-          <a href="../welcome.php"><img class="img-logo" src="../../../core/asset/LogoItkontamaTravelOrange2022.png" alt="Logo-icon"></a>
+          <a href="../welcome.html"><img class="img-logo" src="../../../core/asset/LogoItkontamaTravelOrange2022.png" alt="Logo-icon"></a>
             <button class="hamburger">
                 <div class="bar"></div>
             </button>

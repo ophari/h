@@ -1,9 +1,8 @@
 <?php
+include('../../connection.php');
+include_once('../../input/DataFormulir.php');
 session_start();
-if(!isset($_SESSION['id_users'])) {
-  echo "<script>alert('Anda harus login terlebih dahulu');window.location='../user/login.php';</script>";
-  exit;
-}
+$_SESSION['id_formulir'] = 'c09277202fe04940';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,58 +12,76 @@ if(!isset($_SESSION['id_users'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Selamat Datang</title>
     <link rel="stylesheet" href="../../core/style/style.css"/>
-    <script src="../script/jquery.js"></script>
-    <script>
-    $(document).ready(function() {
-      $('input[type="checkbox"]').on('change', function() {
-        $('input[name="' + this.name + '"]').not(this).prop('checked', false);
-            });
-        });
-    </script>
 </head>
 <body>
     <main>
     <div class="hContainer">
-        <table class="schedule-table">
-            <thead>
-              <tr>
-                <th>Tanggal Keberangkatan</th>
-                <th>Maskapai</th>
-                <th>Tanggal Pulang</th>
-                <th>Jumlah</th>
-                <th>Jumlah Sisa</th>
-                <th>Pilih</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="schedule-row">
-                <td class="schedule-date">01 Januari 2022</td>
-                <td class="schedule-airline">Garuda Indonesia</td>
-                <td class="schedule-return-date">10 Januari 2022</td>
-                <td class="schedule-availability">20</td>
-                <td class="schedule-availability">10</td>
-                <td class="schedule-select"><input type="checkbox" name="schedule"></td>
-              </tr>
-              <tr class="schedule-row">
-                <td class="schedule-date">05 Februari 2022</td>
-                <td class="schedule-airline">Lion Air</td>
-                <td class="schedule-return-date">15 Februari 2022</td>
-                <td class="schedule-availability">15</td>
-                <td class="schedule-availability">10</td>
-                <td class="schedule-select"><input type="checkbox" name="schedule"></td>
-              </tr>
-            </tbody>
-          </table>
-          <nav class="sidebar">
-          <a href="profile.php"><img class="user-logo" src="../../core/asset/icon-user.png" alt="user-logo" href="../index.html"></a>  
+    <?php 
+$formulir = new Formulir();
+$id_users = $_GET['id_jadwal'] ?? null;
+$row = $formulir->DataJadwal();
+if($row){
+?>
+
+<form action="../../controller/TableController.php" method="post">
+  <table class="schedule-table">
+    <thead>
+      <tr>
+        <th>Tanggal Keberangkatan</th>
+        <th>Maskapai</th>
+        <th>Tanggal Pulang</th>
+        <th>Jumlah</th>
+        <th>Jumlah Sisa</th>
+        <th>Pilih</th>
+      </tr>
+    </thead>
+    <tbody>
+      <?php foreach($row as $show) { ?>
+      <tr class="schedule-row">
+        <td class="schedule-date"><?= $show['tanggal_keberangkatan']; ?></td>
+        <td class="schedule-airline"><?= ucwords($show['maskapai']); ?></td>
+        <td class="schedule-return-date"><?= $show['tanggal_pulang']; ?></td>
+        <td class="schedule-availability"><?= $show['jumlah_kursi']; ?></td>
+        <td class="schedule-availability">20</td>
+        <td class="schedule-select">
+          <input type="radio" name="schedule" value="<?= $show['id_jadwal']; ?>">
+        </td>
+      </tr>
+      <?php } ?>
+    </tbody>
+  </table>
+  <a href="form-daftar.php">
+    <button class="smpn sm-4"><p>Kembali</p></button>
+  </a>
+  <button class="smpn sm-2" type="submit" name="submit"><p>Kirim</p></button>
+</form>
+
+<?php } else { ?>
+  <table class="schedule-table">
+    <thead>
+      <tr>
+        <th>Tanggal Keberangkatan</th>
+        <th>Maskapai</th>
+        <th>Tanggal Pulang</th>
+        <th>Jumlah</th>
+        <th>Sisa</th>
+        <th>Hapus</th>
+      </tr>
+    </thead>
+  </table>
+      <?php
+    }
+  ?>
+        <nav class="sidebar">
+          <a href="profile.php"><img class="user-logo" src=".././core/asset/icon-user.png" alt="user-logo"></a>  
             <ul class="nav-list">
-                <li class="list-item"><a class="login" href="login.php">Login/Daftar</a></li>
+                <li class="list-item"><a class="login" href="login.html">Login/Daftar</a></li>
                 <li class="list-item"><a class="fa" href="galeri.html">Galeri</a></li>
                 <li class="list-item"><a class="fa" href="kontak.html">Kontak</a></li>
-                <li class="list-item"><a class="fa" href="pendaftaran.php">Daftar Haji & Umroh</a></li>
+                <li class="list-item"><a class="fa" href="pendaftaran.html">Daftar Haji & Umroh</a></li>
                 <li class="list-item"><a class="fa" href="panduan.html">Panduan</a></li>
                 <li class="list-item"><a class="fa tentang-kami" href="tentang-kami.html">Tentang Kami</a></li>
-                <li class="list-item"><a class="logout" href="../../controller/logout.php">Logout</a></li>
+                <li class="list-item"><a class="logout" href="#">Logout</a></li>
               </ul>
         </nav>
         <nav class="wrapper">
