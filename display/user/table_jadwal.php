@@ -1,8 +1,9 @@
 <?php
-include('../../connection.php');
-include_once('../../input/DataFormulir.php');
-session_start();
-$_SESSION['id_formulir'] = 'c09277202fe04940';
+require_once "../LinkModelController.php";
+$jadwal = new TableController();
+$jadwal->handleForm($id_jadwal);
+$id_formulir = $_GET['id_formulir'];
+$rows = $jadwal->GetAllJadwal();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,61 +18,67 @@ $_SESSION['id_formulir'] = 'c09277202fe04940';
     <main>
     <div class="hContainer">
     <?php 
-$formulir = new Formulir();
-$id_users = $_GET['id_jadwal'] ?? null;
-$row = $formulir->DataJadwal();
-if($row){
-?>
-
-<form action="../../controller/TableController.php" method="post">
-  <table class="schedule-table">
-    <thead>
-      <tr>
-        <th>Tanggal Keberangkatan</th>
-        <th>Maskapai</th>
-        <th>Tanggal Pulang</th>
-        <th>Jumlah</th>
-        <th>Jumlah Sisa</th>
-        <th>Pilih</th>
-      </tr>
-    </thead>
-    <tbody>
-      <?php foreach($row as $show) { ?>
-      <tr class="schedule-row">
-        <td class="schedule-date"><?= $show['tanggal_keberangkatan']; ?></td>
-        <td class="schedule-airline"><?= ucwords($show['maskapai']); ?></td>
-        <td class="schedule-return-date"><?= $show['tanggal_pulang']; ?></td>
-        <td class="schedule-availability"><?= $show['jumlah_kursi']; ?></td>
-        <td class="schedule-availability">20</td>
-        <td class="schedule-select">
-          <input type="radio" name="schedule" value="<?= $show['id_jadwal']; ?>">
-        </td>
-      </tr>
-      <?php } ?>
-    </tbody>
-  </table>
-  <a href="form-daftar.php">
-    <button class="smpn sm-4"><p>Kembali</p></button>
-  </a>
-  <button class="smpn sm-2" type="submit" name="submit"><p>Kirim</p></button>
+    if($rows){
+    ?>
+    <form action="" method="post" id="jadwal-form">
+    <table class="schedule-table">
+        <thead>
+            <tr>
+                <th>Tanggal Keberangkatan</th>
+                <th>Maskapai</th>
+                <th>Tanggal Pulang</th>
+                <th>Jumlah Sisa</th>
+                <th>Pilih</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php 
+            while($row = $rows->fetch_assoc()){
+            ?>
+            <tr class="schedule-row">
+                <td class="schedule-date">
+                    <input type="date" name="tanggal_keberangkatan" value="<?= $row['tanggal_keberangkatan']; ?>">
+                </td>
+                <td class="schedule-return-date">
+                    <input type="text" name="maskapai" value="<?= $row['maskapai']; ?>">
+                </td>
+                <td class="schedule-availability">
+                    <input type="date" name="tanggal_pulang" value="<?= $row['tanggal_pulang']; ?>">
+                </td>
+                <td class="schedule-availability">20</td>
+                <td class="schedule-select">
+                    <input type="radio" name="id_jadwal" value="<?= $row['id_jadwal'];?>" onclick="submitForm()">
+                </td>
+            </tr>
+            <?php 
+            }
+            ?>
+        </tbody>
+    </table>
+    <?php
+        // if (isset($_POST['id_jadwal'])) {
+        //     $conn = mysqli_connect("localhost","root","","db_haji_umroh") ;
+        //     $id_jadwal = $_POST['id_jadwal'];
+        //     $sql = "SELECT * FROM jadwal_perjalanan WHERE id_jadwal=$id_jadwal";
+        //     $result = $conn->query($sql);
+        //     if ($result->num_rows > 0) {
+        //         while($row = $result->fetch_assoc()) {
+        //             echo '<input type="hidden" name="tanggal_keberangkatan" value="'.$row['tanggal_keberangkatan'].'">';
+        //             echo '<input type="hidden" name="maskapai" value="'.$row['maskapai'].'">';
+        //             echo '<input type="hidden" name="tanggal_pulang" value="'.$row['tanggal_pulang'].'">';
+        //         }
+        //     }
+        // }
+    ?>
+    <input type="hidden" name="id_formulir" value="<?= $id_formulir; ?>">
+    <a href="form-daftar.php">
+        <button class="smpn sm-4"><p>Kembali</p></button>
+    </a>
+    <button class="smpn sm-2" type="submit" name="submit" ><p>Kirim</p></button>
 </form>
-
-<?php } else { ?>
-  <table class="schedule-table">
-    <thead>
-      <tr>
-        <th>Tanggal Keberangkatan</th>
-        <th>Maskapai</th>
-        <th>Tanggal Pulang</th>
-        <th>Jumlah</th>
-        <th>Sisa</th>
-        <th>Hapus</th>
-      </tr>
-    </thead>
-  </table>
-      <?php
-    }
-  ?>
+            <?php 
+            }
+            ?>
         <nav class="sidebar">
           <a href="profile.php"><img class="user-logo" src=".././core/asset/icon-user.png" alt="user-logo"></a>  
             <ul class="nav-list">
@@ -93,5 +100,15 @@ if($row){
     </div>
 </main>
     <script src="../../core/script/script.js"></script>
+    <script>
+// Add event listener to all radio buttons
+var radioButtons = document.querySelectorAll('input[type=radio][name="id_jadwal"]');
+radioButtons.forEach(function(radioButton) {
+  radioButton.addEventListener('change', function() {
+    // When radio button is selected, submit the form
+    this.closest('form').submit();
+  });
+});
+</script>
 </body>
 </html>
