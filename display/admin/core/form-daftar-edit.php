@@ -1,9 +1,9 @@
 <?php
-session_start();
-include('../../../connection.php');
-include_once('../../../input/DashboardModel.php');
-
+// session_start();
+require_once("../../LinkModelController.php");
 $formulir = new admin();
+$update = new UpdateController();
+$update->Update();
 $id_formulir = $_GET['id_formulir'] ?? null;
 $user = $formulir->getInfo($id_formulir);
 
@@ -22,7 +22,7 @@ $user = $formulir->getInfo($id_formulir);
     <main>
     <div class="hContainer daftar">
         <h1 class="heading">Formulir Pendaftaran</h1>
-        <form class="form" action="../../../controller/UpdateController.php" method="post" enctype="multipart/form-data">
+        <form class="form" action="" method="post" enctype="multipart/form-data">
         <input type="hidden" name="id_formulir" value="<?php echo $user['id_formulir'] ?>" readonly>
         <input type="hidden" name="id_users" value="<?php echo $user['id_users'] ?>" readonly>
         <?php 
@@ -44,14 +44,14 @@ if ($user) {
               <div class="goldar-2">
                 <label for="bloodType"></label>
                 <select id="bloodType" name="kamar" required>
-                <option value="4" <?php if ($user !== null && $user['kamar'] === 'Quad') echo "selected"; ?>>Quad</option>
-                <option value="3" <?php if ($user !== null && $user['kamar'] === 'Triple') echo "selected"; ?>>Triple</option>
-                <option value="2" <?php if ($user !== null && $user['kamar'] === 'Doule') echo "selected"; ?>>Double</option>
+                <option value="1" <?php if ($user !== null && $user['kamar'] === 'Quad') echo "selected"; ?>>Quad</option>
+                <option value="2" <?php if ($user !== null && $user['kamar'] === 'Triple') echo "selected"; ?>>Triple</option>
+                <option value="3" <?php if ($user !== null && $user['kamar'] === 'Doule') echo "selected"; ?>>Double</option>
                 </select>
               </div>
             <div class="field field_v1">
             <label for="nama" class="ha-screen-reader">Nama Lengkap</label><br>
-            <input type="text" name="nama" id="nama" class="field__input" placeholder="Isikan nama lengkap anda" value="<?php echo strtoupper($user['nama_lengkap'] ?? ''); ?>" required>
+            <input type="text" name="nama_lengkap" id="nama" class="field__input" placeholder="Isikan nama lengkap anda" value="<?php echo strtoupper($user['nama_lengkap'] ?? ''); ?>" required>
             <span class="field__label-wrap" aria-hidden="true">
                 <span class="field__label">Nama Lengkap</span>
               </span>
@@ -69,7 +69,7 @@ if ($user) {
             <br><br>
             <div class="field field_v1">
                 <label for="ayah" class="ha-screen-reader">Nama Ayah Kandung</label><br>
-                <input type="txt" name="ayah" id="ayah" class="field__input" placeholder="Masukkan nama lengkap ayah anda" value="<?php echo strtoupper($user['nama_ayah_kandung'] ?? ''); ?>" required>
+                <input type="txt" name="nama_ayah_kandung" id="ayah" class="field__input" placeholder="Masukkan nama lengkap ayah anda" value="<?php echo strtoupper($user['nama_ayah_kandung'] ?? ''); ?>" required>
                 <span class="field__label-wrap" aria-hidden="true">
                     <span class="field__label">Nama Ayah Kandung</span>
                   </span>
@@ -142,7 +142,7 @@ if ($user) {
               <br>
               <div class="goldar">
                 <label for="bloodType"></label>
-                <select id="bloodType" name="goldar" required>
+                <select id="bloodType" name="status_perkawinan" required>
                 <option value="sudah" <?php if ($user !== null && $user['status_perkawinan'] === 'sudah') echo "selected"; ?>>Sudah Menikah</option>
                 <option value="Pernah" <?php if ($user !== null && $user['status_perkawinan'] === 'pernah') echo "selected"; ?>>Pernah Menikah</option>
                 <option value="belum" <?php if ($user !== null && $user['status_perkawinan'] === 'belum') echo "selected"; ?>>Belum Menikah</option>
@@ -157,7 +157,7 @@ if ($user) {
 
             <div class="field field_v1">
             <label for="provinsi" class="ha-screen-reader">Provinsi</label><br>
-            <input type="text" name="nama" id="provinsi" class="field__input" placeholder="Isikan Provinsi" value="<?php echo $row['provinsi']; ?>" required>
+            <input type="text" name="provinsi" id="provinsi" class="field__input" placeholder="Isikan Provinsi" value="<?php echo $row['provinsi']; ?>" required>
             <span class="field__label-wrap" aria-hidden="true">
               <span class="field__label">Provinsi</span>
               </span>
@@ -175,7 +175,7 @@ if ($user) {
                 <br><br>
                 <div class="field field_v1">
             <label for="kec" class="ha-screen-reader">Kecamatan</label><br>
-            <input type="text" name="kota_kabupaten" id="kec" class="field__input" placeholder="Isikan Provinsi" value="<?php echo $row['kecamatan']; ?>" required>
+            <input type="text" name="kecamatan" id="kec" class="field__input" placeholder="Isikan Provinsi" value="<?php echo $row['kecamatan']; ?>" required>
             <span class="field__label-wrap" aria-hidden="true">
               <span class="field__label">Kecamatan</span>
               </span>

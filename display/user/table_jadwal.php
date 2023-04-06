@@ -1,7 +1,7 @@
 <?php
 require_once "../LinkModelController.php";
 $jadwal = new TableController();
-$jadwal->handleForm($id_jadwal);
+$jadwal->handleForm();
 $id_formulir = $_GET['id_formulir'];
 $rows = $jadwal->GetAllJadwal();
 ?>
@@ -55,21 +55,7 @@ $rows = $jadwal->GetAllJadwal();
             ?>
         </tbody>
     </table>
-    <?php
-        // if (isset($_POST['id_jadwal'])) {
-        //     $conn = mysqli_connect("localhost","root","","db_haji_umroh") ;
-        //     $id_jadwal = $_POST['id_jadwal'];
-        //     $sql = "SELECT * FROM jadwal_perjalanan WHERE id_jadwal=$id_jadwal";
-        //     $result = $conn->query($sql);
-        //     if ($result->num_rows > 0) {
-        //         while($row = $result->fetch_assoc()) {
-        //             echo '<input type="hidden" name="tanggal_keberangkatan" value="'.$row['tanggal_keberangkatan'].'">';
-        //             echo '<input type="hidden" name="maskapai" value="'.$row['maskapai'].'">';
-        //             echo '<input type="hidden" name="tanggal_pulang" value="'.$row['tanggal_pulang'].'">';
-        //         }
-        //     }
-        // }
-    ?>
+    
     <input type="hidden" name="id_formulir" value="<?= $id_formulir; ?>">
     <a href="form-daftar.php">
         <button class="smpn sm-4"><p>Kembali</p></button>
@@ -79,16 +65,25 @@ $rows = $jadwal->GetAllJadwal();
             <?php 
             }
             ?>
-        <nav class="sidebar">
-          <a href="profile.php"><img class="user-logo" src=".././core/asset/icon-user.png" alt="user-logo"></a>  
+         <nav class="sidebar">
+          <a href="../../display/user/profile.php"><img class="user-logo" src="../../core/asset/icon-user.png" alt="user-logo" href="index.html"></a>  
             <ul class="nav-list">
-                <li class="list-item"><a class="login" href="login.html">Login/Daftar</a></li>
-                <li class="list-item"><a class="fa" href="galeri.html">Galeri</a></li>
-                <li class="list-item"><a class="fa" href="kontak.html">Kontak</a></li>
-                <li class="list-item"><a class="fa" href="pendaftaran.html">Daftar Haji & Umroh</a></li>
-                <li class="list-item"><a class="fa" href="panduan.html">Panduan</a></li>
-                <li class="list-item"><a class="fa tentang-kami" href="tentang-kami.html">Tentang Kami</a></li>
-                <li class="list-item"><a class="logout" href="#">Logout</a></li>
+                <?php
+                if (isset($_SESSION['username'])) {
+                    // tampilkan username di tempat li
+                    echo '<li class="list-item-login">' . $_SESSION['username'] . '</li>';
+                } else {
+                    // tampilkan li "Login/Daftar"
+                    echo '<li class="list-item"><a class="login" href="./display/user/login.php">Login/Daftar</a></li>';
+                }
+                ?>
+                <!-- <li class="list-item"><a class="login" href="./display/user/login.php">Login/Daftar</a></li> -->
+                <li class="list-item"><a class="fa" href="display/user/galeri.php">Galeri</a></li>
+                <li class="list-item"><a class="fa" href="display/user/kontak.html">Kontak</a></li>
+                <li class="list-item"><a class="fa" href="display/user/pendaftaran.html">Daftar Haji & Umroh</a></li>
+                <li class="list-item"><a class="fa" href="display/user/panduan.html">Panduan</a></li>
+                <li class="list-item"><a class="fa tentang-kami" href="display/user/tentang-kami.html">Tentang Kami</a></li>
+                <li class="list-item"><a class="logout" href="./controller/logout.php">Logout</a></li>
               </ul>
         </nav>
         <nav class="wrapper">
@@ -100,15 +95,6 @@ $rows = $jadwal->GetAllJadwal();
     </div>
 </main>
     <script src="../../core/script/script.js"></script>
-    <script>
-// Add event listener to all radio buttons
-var radioButtons = document.querySelectorAll('input[type=radio][name="id_jadwal"]');
-radioButtons.forEach(function(radioButton) {
-  radioButton.addEventListener('change', function() {
-    // When radio button is selected, submit the form
-    this.closest('form').submit();
-  });
-});
 </script>
 </body>
 </html>

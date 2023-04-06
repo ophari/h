@@ -11,49 +11,31 @@ class TableController extends TableJadwal{
       return $jadwal;
       }
 
-  //   public function GetAllJadwal($selected_option){
-  //     $jadwal = $this->model->DataJadwal($selected_option);
-  //     return $jadwal;
-  // }
-    
-
-  public function handleForm($id_jadwal) {
+  public function handleForm() {
     if(isset($_POST['submit'])){
-  
-      $conn = mysqli_connect("localhost","root","","db_haji_umroh") ;
+      
       $id_jadwal = $_POST['id_jadwal'];
-      $sql = "SELECT * FROM jadwal_perjalanan WHERE id_jadwal=$id_jadwal";
-      $result = $conn->query($sql);
-      if ($result->num_rows > 0) {
-        while($row = $result->fetch_assoc()) {
-          $tanggal_keberangkatan = $row['tanggal_keberangkatan'];
-          $maskapai = $row['maskapai'];
-          $tanggal_pulang = $row['tanggal_pulang'];
-        }
-      }
-  
-      $id_formulir = $_POST['id_formulir'];
-      $id_jadwal = $_POST['id_jadwal'];
-  
-      // Check if the id_jadwal field is empty
-      if(empty($id_jadwal)) {
-        echo "Anda harus memilih jadwal terlebih dahulu";
+      $jadwal = $this->model->getJadwalPerjalananById($id_jadwal);
+      
+      if ($jadwal == null) {
+        echo "Jadwal tidak ditemukan";
         return;
       }
   
+      $id_formulir = $_POST['id_formulir'];
+      $tanggal_keberangkatan = $jadwal['tanggal_keberangkatan'];
+      $maskapai = $jadwal['maskapai'];
+      $tanggal_pulang = $jadwal['tanggal_pulang'];
+  
       $update = $this->model->updateFormulir($id_formulir, $id_jadwal, $tanggal_keberangkatan, $maskapai, $tanggal_pulang);
       if($update){
-        echo "Data berhasil diupdate";
+        echo "<script>alert('Jadwal keberangkatan berhasil dipilih');window.location='form_pembayaran.html';</script>";
       } else {
-        echo "Data gagal diupdate";
+        echo "<script>alert('Jadwal keberangkatan berhasil dipilih');</script>";
       }
     }
   }
   
   
-    // public function updateJadwal($id_jadwal,$id_formulir,  $tanggal_keberangkatan, $maskapai, $tanggal_pulang) {
-    //     $success = $this->model->updateFormulir($id_jadwal, $id_formulir, $tanggal_keberangkatan, $maskapai, $tanggal_pulang);
-    //     return $success;
-    // }
-
+    
 }

@@ -42,8 +42,11 @@ if (isset($_POST['submit'])) {
         // $fileTemp = $_FILES['foto']['tmp_name'];
         // move_uploaded_file($fileTemp, "../core/img/" . $foto);
         $tanggal_keberangkatan = 0;
-        $maskapai = 0;
         $tanggal_pulang = 0;
+        $maskapai = 0;
+        $mekah = 0;
+        $madinah = 0;
+        
 
         
   // // Mendapatkan nama file
@@ -59,7 +62,7 @@ if (isset($_POST['submit'])) {
   $timestamp = date('Y-m-d H:i:s');
   $status = 'belum'; 
  
-    $formulir = new Formulir($id_users,$program, $kamar, $nama_lengkap, $nik, $nama_ayah_kandung, $tempat_lahir, $tanggal_lahir, $no_paspor, $tempat_dikeluarkan_paspor, $tanggal_dikeluarkan_paspor, $masa_berlaku_paspor, $jenis_kelamin, $golongan_darah, $status_perkawinan, $provinsi, $kota_kabupaten, $kecamatan, $kelurahan, $jalan, $email, $no_telp_rumah, $no_telp_seluler, $pendidikan_terakhir, $pekerjaan, $keluarga_yg_ikut, $hubungan, $no_telp, $informasi_pendaftaran, $penyakit_kronis, $keluarga_yg_bisa_dihubungi, $hubungan_keluarga, $no_telp_keluarga, $tanggal_keberangkatan, $maskapai, $tanggal_pulang, $timestamp, $status);
+    $formulir = new Formulir($id_users,$program, $kamar, $nama_lengkap, $nik, $nama_ayah_kandung, $tempat_lahir, $tanggal_lahir, $no_paspor, $tempat_dikeluarkan_paspor, $tanggal_dikeluarkan_paspor, $masa_berlaku_paspor, $jenis_kelamin, $golongan_darah, $status_perkawinan, $provinsi, $kota_kabupaten, $kecamatan, $kelurahan, $jalan, $email, $no_telp_rumah, $no_telp_seluler, $pendidikan_terakhir, $pekerjaan, $keluarga_yg_ikut, $hubungan, $no_telp, $informasi_pendaftaran, $penyakit_kronis, $keluarga_yg_bisa_dihubungi, $hubungan_keluarga, $no_telp_keluarga, $tanggal_keberangkatan,$tanggal_pulang ,$maskapai, $mekah, $madinah , $timestamp, $status);
     if($formulir->Tambah_data()){
       $id_formulir = $formulir->get_id_formulir();
       echo "<script>alert('Berhasil');window.location='../display/user/table_jadwal.php?id_formulir=$id_formulir';</script>";
