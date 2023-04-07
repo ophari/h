@@ -28,17 +28,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <th>Maskapai</th>
                 <th>Mekah</th>
                 <th>Madinah</th>
-                <th>Jumlah</th>
+                <th>Jumlah Kursi</th>
+                <th>Sisa Kursi</th>
               </tr>
             </thead>
             <tbody>
               <tr class="schedule-row">
                 <td class="schedule-date"><input type="date" name="tanggal_keberangkatan"required></td>
                 <td class="schedule-return-date"><input type="date" name="tanggal_pulang" required></td>
+                <td class="schedule-airline"><input type="text" name="maskapai" placeholder="Masukkan Maskapai" required></td>
                 <td class="schedule-return-date"><input type="text" name="mekah" required></td>
                 <td class="schedule-return-date"><input type="text" name="madinah" required></td>
-                <td class="schedule-airline"><input type="text" name="maskapai" placeholder="Masukkan Maskapai" required></td>
                 <td class="schedule-availability"><input type="text" name="jumlah_kursi" placeholder="Masukkan jumlah kursi" required></td>
+                <td class="schedule-availability"><input type="text" name="sisa_kursi" placeholder="Masukkan jumlah kursi" required></td>
               </tr>
             </tbody>
           </table>

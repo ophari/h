@@ -137,11 +137,12 @@ class admin extends Database {
         $mekah = $_POST['mekah'];
         $madinah = $_POST['madinah'];
         $jumlah_kursi = $_POST['jumlah_kursi'];
+        $sisa_kursi = $_POST['sisa_kursi'];
         
     
         // Buat query untuk insert data ke tabel table_jadwal
-        $sql = "INSERT INTO jadwal_perjalanan (id_jadwal, tanggal_keberangkatan,tanggal_pulang, maskapai, mekah, madinah , jumlah_kursi)
-                VALUES ('', '$tanggal_keberangkatan', '$tanggal_pulang', '$maskapai', '$mekah', '$madinah', '$jumlah_kursi')";
+        $sql = "INSERT INTO jadwal_perjalanan (id_jadwal, tanggal_keberangkatan,tanggal_pulang, maskapai, mekah, madinah , jumlah_kursi,sisa_kursi)
+                VALUES ('', '$tanggal_keberangkatan', '$tanggal_pulang', '$maskapai', '$mekah', '$madinah', '$jumlah_kursi','$sisa_kursi')";
     
         // Jalankan query
         if ($this->conn->query($sql) === TRUE) {

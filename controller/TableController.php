@@ -23,16 +23,19 @@ class TableController extends TableJadwal{
       }
   
       $id_formulir = $_POST['id_formulir'];
-      $tanggal_keberangkatan = $jadwal['tanggal_keberangkatan'];
-      $maskapai = $jadwal['maskapai'];
-      $tanggal_pulang = $jadwal['tanggal_pulang'];
-  
-      $update = $this->model->updateFormulir($id_formulir, $id_jadwal, $tanggal_keberangkatan, $maskapai, $tanggal_pulang);
+      $tanggal_keberangkatan = $_POST['tanggal_keberangkatan'];
+      $tanggal_pulang = $_POST['tanggal_pulang'];
+      $maskapai = $_POST['maskapai'];
+      $mekah = $_POST['mekah'];
+      $madinah = $_POST['madinah'];
+     
+      $update = $this->model->updateFormulir($id_formulir, $id_jadwal, $tanggal_keberangkatan, $tanggal_pulang,  $maskapai, $mekah, $madinah);
       if($update){
         echo "<script>alert('Jadwal keberangkatan berhasil dipilih');window.location='form_pembayaran.html';</script>";
       } else {
-        echo "<script>alert('Jadwal keberangkatan berhasil dipilih');</script>";
+        echo "<script>alert('Kouta sudah penuh. Jadwal keberangkatan gagal dipilih');</script>";
       }
+      
     }
   }
   

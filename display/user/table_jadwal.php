@@ -30,6 +30,7 @@ $rows = $jadwal->GetAllJadwal();
                 <th>Mekah</th>
                 <th>Madinah</th>
                 <th>Jumlah Sisa</th>
+                <th>Sisa Kursi</th>
                 <th>Pilih</th>
             </tr>
         </thead>
@@ -53,7 +54,15 @@ $rows = $jadwal->GetAllJadwal();
                 <td class="schedule-return-date">
                     <input type="text" name="madinah" value="<?= $row['madinah']; ?>">
                 </td>
-                <td class="schedule-availability">20</td>
+
+                <td class="schedule-return-date">
+                    <input type="text" name="jumlah_kursi" value="<?= $row['jumlah_kursi']; ?>">
+                </td>
+
+                <td class="schedule-return-date">
+                    <input type="text" name="sisa_Kursi" value="<?= $row['sisa_kursi']; ?>">
+                </td>
+              
                 <td class="schedule-select">
                     <input type="radio" name="id_jadwal" value="<?= $row['id_jadwal'];?>" onclick="submitForm()">
                 </td>
