@@ -43,26 +43,15 @@ public function getJadwalPerjalananById($id_jadwal) {
 //     }
 //   }
 
-public function updateFormulir($id_formulir, $id_jadwal, $tanggal_keberangkatan,$tanggal_pulang , $maskapai, $mekah, $madinah){
-  $sql = "UPDATE formulir SET id_jadwal_formulir=?, tanggal_keberangkatan_formulir=?,tanggal_pulang_formulir=?,  maskapai_formulir=?, mekah_formulir =?, madinah_formulir=? WHERE id_formulir=?";
+public function updateFormulir($id_formulir, $id_jadwal, $tanggal_keberangkatan,$tanggal_pulang, $maskapai,$mekah, $madinah ){
+  $sql = "UPDATE formulir SET id_jadwal_formulir=?, tanggal_keberangkatan_formulir=?,tanggal_pulang_formulir=?, maskapai_formulir=?, mekah_formulir =?, madinah_formulir=?  WHERE id_formulir=?";
   $stmt = $this->conn->prepare($sql);
-  $stmt->bind_param("isssssi", $id_jadwal, $tanggal_keberangkatan,$tanggal_pulang,$maskapai,$mekah, $madinah, $id_formulir);
+  $stmt->bind_param("isssssi", $id_jadwal, $tanggal_keberangkatan,$tanggal_pulang ,$maskapai ,$mekah, $madinah, $id_formulir);
   if($stmt->execute()){
-  if($stmt->affected_rows > 0) {
-  // update sisa kursi di tabel jadwal_perjalanan
-  $sql2 = "UPDATE jadwal_perjalanan SET sisa_kursi = sisa_kursi - 1 WHERE id_jadwal = ? AND sisa_kursi > 0";
-  $stmt2 = $this->conn->prepare($sql2);
-  $stmt2->bind_param("i", $id_jadwal);
-  $stmt2->execute();
-  if($stmt2->affected_rows <= 0) {
-  return false; // kouta penuh
-  }
-  }
-  return true;
+      return true;
   } else {
-  return false;
+      return false;
   }
-  }
-
+}
 
 }
