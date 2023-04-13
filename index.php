@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once "display/LinkModelController.php";
 $controller = new EditHomeController;
 $row = $controller->GetAll();

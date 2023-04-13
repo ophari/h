@@ -1,7 +1,8 @@
 <?php
+session_start();
 require_once "../LinkModelController.php";
 $loginController = new LoginController();
-$loginController->login($username =$_POST['username'],$password=$_POST['password']);
+$loginController->handleForm();
 ?>
 
 <!DOCTYPE html>

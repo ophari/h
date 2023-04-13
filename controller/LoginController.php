@@ -1,5 +1,4 @@
 <?php
-session_start();
 class LoginController extends LoginModel{
     private $user;
     public function __construct() {
@@ -30,6 +29,16 @@ class LoginController extends LoginModel{
             }
         }
     }
+
+    public function handleForm() {
+       
+        if (isset($_POST['submit'])) {
+            $username = $_POST['username'];
+            $password = $_POST['password'];
+            $this->login($username, $password);
+        }
+       
+}
 }
     
     // Inisiasi LoginController

@@ -4,6 +4,8 @@ session_start();
       echo "<script>alert('Anda harus login terlebih dahulu');window.location='../user/login.php';</script>";
       exit;
   }
+  $_SESSION['id_formulir'] = $id_formulir;
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
