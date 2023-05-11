@@ -1,5 +1,5 @@
 <?php
-session_start();
+// session_start();
 require_once "../LinkModelController.php";
 $jadwal = new TableController();
 $jadwal->handleForm();
@@ -76,11 +76,12 @@ $rows = $jadwal->GetAllJadwal();
     </table>
     
     <input type="hidden" name="id_formulir" value="<?= $id_formulir; ?>">
-    <a href="form-daftar.php">
-        <button class="smpn sm-4"><p>Kembali</p></button>
-    </a>
-    <button class="smpn sm-2" type="submit" name="submit" ><p>Kirim</p></button>
+   
+      
+  
+    <button class="smpn sm-2" type="submit" name="submit" id="jadwal-form"><p>Kirim</p></button>
 </form>
+<a href="./form-daftar.php"><button class="smpn sm-4"><p>Kembali</p></button></a>
             <?php 
             }
             ?>
@@ -117,11 +118,12 @@ $rows = $jadwal->GetAllJadwal();
 </script>
 <script>
     document.getElementById("jadwal-form").addEventListener("submit", function(event){
-    var konfirmasi = confirm("Apakah Anda yakin memilih jadwal ini?");
-    if(!konfirmasi){
-        event.preventDefault();
-    }
+  var konfirmasi = confirm("Apakah Anda yakin memilih jadwal ini?");
+  if(!konfirmasi){
+    event.preventDefault();
+  }
 });
+
 
 </script>
 </body>

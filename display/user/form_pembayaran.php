@@ -1,5 +1,5 @@
 <?php
-session_start();
+// session_start();
 require_once "../LinkModelController.php";
 $pembayaran = new FormPembayaran();
 $pembayaran -> handlePembayaran();

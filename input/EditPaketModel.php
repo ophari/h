@@ -7,6 +7,12 @@ class EditPaketModel extends Database{
         $this->conn = $db->conn;
     }
 
+    public function getGambarById($id)
+    {
+        $result = mysqli_query($this->conn, "SELECT gambar FROM gambarpaket WHERE id='$id'");
+        $row = mysqli_fetch_assoc($result);
+        return $row;
+    }
     public function getGambar()
     {
         $result = mysqli_query($this->conn, "SELECT * FROM gambarpaket");
@@ -26,10 +32,10 @@ class EditPaketModel extends Database{
         $check = getimagesize($tmp_file);
 
         // Check if file already exists
-        if (file_exists($target_file)) {
-            echo "<script>alert('File sudah ada');</script>";
-            $uploadOk = 0;
-        }
+        // if (file_exists($target_file)) {
+        //     echo "<script>alert('File sudah ada');</script>";
+        //     $uploadOk = 0;
+        // }
 
         // Check file size
         if ($ukuran_file > 5000000) {
@@ -69,4 +75,4 @@ class EditPaketModel extends Database{
     
     
     
-} // <-- Missing curly brace
+} 

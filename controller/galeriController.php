@@ -58,7 +58,7 @@ class GaleriController extends PhotoModel
         if ($result) {
             echo "File berhasil di-upload dan data berhasil disimpan ke database.";
         } else {
-            // echo "<script>alert('error');window.location='galeri.php';</script>";
+            echo "<script>alert('error');window.location='galeri.php';</script>";
         }
     }
 

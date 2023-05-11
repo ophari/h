@@ -1,5 +1,4 @@
 <?php
-session_start();
 require_once "../LinkModelController.php";
 $loginController = new LoginController();
 $loginController->handleForm();
@@ -51,7 +50,7 @@ $loginController->handleForm();
               </ul>
           </nav>
              <nav class="wrapper">
-                <a href="../welcome.php"><img class="img-logo" src="../../core/asset/LogoItkontamaTravelOrange2022.png" alt="Logo-icon"></a> 
+                <a href="../../index.php"><img class="img-logo" src="../../core/asset/LogoItkontamaTravelOrange2022.png" alt="Logo-icon"></a> 
                   <button class="hamburger">
                     <div class="bar"></div>
                   </button>

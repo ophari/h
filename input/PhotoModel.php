@@ -27,7 +27,12 @@ class PhotoModel extends Database {
         $this->ukuran_file = $ukuran_file;
         $this->tmp_file = $tmp_file;
         $this->deskripsi = $deskripsi;
-
+    
+        if (empty($this->tmp_file)) {
+            echo "<script>alert('Gambar kosong');window.location='galeri.php';</script>";
+            return false;
+        }
+    
         $target_dir = "../../../core/galeri/";
         $target_file = $target_dir . basename($this->nama_file);
         $uploadOk = 1;
@@ -50,7 +55,7 @@ class PhotoModel extends Database {
         if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
             echo "<script>alert('Jenis file yang di upload hanya JPG, JPEG, PNG & GIF');window.location='galeri.php';</script>";
             $uploadOk = 0;
-        }
+        }    
         
         if ($uploadOk == 0) {
             echo "Sorry, your file was not uploaded.";
@@ -70,7 +75,7 @@ class PhotoModel extends Database {
             }
         }
     }
-
+    
     public function updatePhotoById($id, $nama_file, $ukuran_file, $tmp_file, $deskripsi) {
         // Get photo data
         $sql = "SELECT * FROM galeri WHERE id = $id";

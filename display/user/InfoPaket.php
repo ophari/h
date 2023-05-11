@@ -1,25 +1,24 @@
 <?php
-// session_start();
-require_once "display/LinkModelController.php";
-$controller = new EditHomeController;
-$row = $controller->GetAll();
-?>
+require_once "../LinkModelController.php";
+$controller = new InfoPaketController();
+$id_foto = 1;
 
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Selamat Datang</title>
-    <link rel="stylesheet" href="core/style/style.css"/>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../../core/style/InfoPaket.css">
 </head>
-<body>                                                                                                                                                                           
-    <main>
+<body>
+<main>
     <div class="hContainer">
-            <a href="display/user/login.html"><img class="mid-img" src="core/gambar_home/<?php echo $row['gambar']?>" alt="ayo daftar"></img></a>
+           
         <nav class="sidebar">
-          <a href="display/user/profile.php"><img class="user-logo" src="core/asset/icon-user.png" alt="user-logo" href="index.html"></a>  
+          <a href="display/user/profile.php"><img class="user-logo" src="../../core/asset/icon-user.png" alt="user-logo" href="index.html"></a>  
             <ul class="nav-list">
                 <?php
                 if (isset($_SESSION['username'])) {
@@ -40,13 +39,25 @@ $row = $controller->GetAll();
               </ul>
         </nav>
         <nav class="wrapper">
-          <a href="index.html"><img class="img-logo" src="core/asset/LogoItkontamaTravelOrange2022.png" alt="Logo-icon"></a>
+          <a href="../../index.php"><img class="img-logo" src="../../core/asset/LogoItkontamaTravelOrange2022.png" alt="Logo-icon"></a>
             <button class="hamburger">
                 <div class="bar"></div>
             </button>
         </nav>
     </div>
 </main>
-    <script src="core/script/script.js"></script>
+
+<section class="satu">
+<div class="infoContainer">
+  <div class="PosisiGambar">
+    <div class="boxsize">
+    <a class="LinkInfo" href=""><img class="Gambar" src="../../core/info_paket/<?= $controller->ByIdFoto($id_foto); ?>" alt=""></a>
+    
+    </div>
+  </div>
+</div>
+</section>
 </body>
+<script src="../../core/script/script.js"></script>
 </html>
+
