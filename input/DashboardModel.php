@@ -26,7 +26,7 @@ class admin extends Database {
     {
         $id_users = $_GET['id_users'] ?? null;
         if (isset($id_users)) {
-            $profilequery = "SELECT u.username, u.email, f.id_formulir, f.nama_lengkap, f.nik, f.time_stamp, f.status
+            $profilequery = "SELECT u.username, u.email, f.id_formulir, f.id_users, f.nama_lengkap, f.nik, f.id_jadwal_formulir, f.id_pembayaran_formulir, f.time_stamp, f.status
                              FROM users u 
                              JOIN formulir f ON u.id_users = f.id_users 
                              WHERE u.id_users='$id_users'
@@ -195,7 +195,7 @@ class admin extends Database {
 
         // Jalankan query
         if ($this->conn->query($sql) === TRUE) {
-            echo "<script>alert('Penambahan Data Berhasil');window.location=' table_jadwal_admin.php';</script>";
+            echo "<script>alert('Penambahan Data Berhasil');window.location=' dashboard_user.php?id_users=$id_users';</script>";
         } else {
             echo "Error: " . $sql . "<br>" . $this->conn->error;
         }
@@ -248,4 +248,18 @@ class admin extends Database {
             return false;
         }  
     }
+
+    public function DataFormulir($id_formulir){
+        $id_formulir = $_GET['id_formulir'];
+        $sql = "SELECT * FROM formulir WHERE id_formulir = ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param('i', $id_formulir);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if($result->num_rows > 0){
+            return $result; 
+        } else {
+            return false;
+        }
+      }
 }
