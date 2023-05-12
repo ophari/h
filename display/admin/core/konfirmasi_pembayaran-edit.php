@@ -1,7 +1,12 @@
 <?php
-require_once "../../../connection.php";
-require_once "../../../input/DashboardModel.php";
 require_once "../../LinkModelController.php";
+session_start();
+if(!isset($_SESSION['id_users']) || $_SESSION['level'] != 'admin') {
+    echo "<script>alert('Anda harus login terlebih dahulu');window.location='../../display/user/login.php';</script>";
+    exit;
+  }
+  $username = isset($_SESSION['username']) ? $_SESSION['username'] : '';
+   
 $result = new admin();
 $pembayaran = new FormPembayaran();
 $pembayaran->updatePembayaranAdmin();
@@ -30,20 +35,21 @@ if ($result->num_rows > 0) {
     </div>
     <div class="line n"></div>
     <form action="" method="post">
+        <input type="hidden" name="id_formulir" value="<?=$row['id_formulir'];?>">
         <h3>Foto Bukti Pembayaran : </h3>
         <div class="line n"></div>
         <h3>Status Transaksi :
             <div class="goldar-3">
                 <select id="bloodType" name="status" required>
-                <option value="status" <?php if ($row !== null && $row['status'] === 'sudah') echo "selected"; ?>>sudah</option>
-                <option value="status" <?php if ($row !== null && $row['status'] === 'belum') echo "selected"; ?>>belum</option>
-                <option value="status" <?php if ($row !== null && $row['status'] === 'ditolak') echo "selected"; ?>>ditolak</option>
+                <option value="sudah" <?php if ($row !== null && $row['status'] === 'sudah') echo "selected"; ?>>sudah</option>
+                <option value="belum" <?php if ($row !== null && $row['status'] === 'belum') echo "selected"; ?>>belum</option>
+                <option value="ditolak" <?php if ($row !== null && $row['status'] === 'ditolak') echo "selected"; ?>>ditolak</option>
                 </select> 
             </div>
         </h3>
         <div class="line n"></div>
         <h3>Waktu Pembayaran : <?php echo $row['time_stamp'];?></h3>
-        <a href="konfirmasi_pembayaran-edit.php?id_formulir=<?php echo $row['id_formulir']; ?>&id_users=<?php echo $row['id_users'] ?>"><button type="submit" name="submit" class="tombol">Simpan</button></a>
+        <button type="submit" name="submit" class="tombol">Simpan</button>
     </form>
   </div>
   <?php
@@ -53,17 +59,19 @@ if ($result->num_rows > 0) {
         <nav class="sidebar">
             <img class="user-logo" src="../../../core/asset/icon-user.png" alt="user-logo" href="../welcome.php">
             <ul class="nav-list">
-                <li class="list-item"><a class="login" href="login.html">Login/Daftar</a></li>
+            <li class="list-item"><a class="login" href="#"><?php echo $username; ?></a></li>
                 <li class="list-item"><a class="fa" href="galeri.html">Galeri</a></li>
                 <li class="list-item"><a class="fa" href="kontak.html">Kontak</a></li>
                 <li class="list-item"><a class="fa" href="pendaftaran.html">Daftar Haji & Umroh</a></li>
                 <li class="list-item"><a class="fa" href="dashboard.html">Dashboard</a></li>
-                <li class="list-item"><a class="fa tentang-kami" href="tentang-kami.html">Tentang Kami</a></li>
-                <li class="list-item"><a class="logout" href="#">Logout</a></li>
+                <div class="TentangLogout">
+                <li class="list-item"><a class="fa tentang-kami" href="core/tentang-kami.html">Tentang Kami</a></li>
+                <li class="list-item"><a id="logout-link" class="logout" href="../../controller/logout.php">Logout</a></li>
+                </div>
               </ul>
         </nav>
         <nav class="wrapper">
-          <a href="../welcome.html"><img class="img-logo" src="../../../core/asset/LogoItkontamaTravelOrange2022.png" alt="Logo-icon"></a>
+          <a href="../../admin/welcome.php"><img class="img-logo" src="../../../core/asset/LogoItkontamaTravelOrange2022.png" alt="Logo-icon"></a>
             <button class="hamburger">
                 <div class="bar"></div>
             </button>

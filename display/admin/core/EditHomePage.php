@@ -1,5 +1,10 @@
 <?php
 require_once "../../LinkModelController.php";
+
+if(!isset($_SESSION['id_users']) || $_SESSION['level'] != 'admin') {
+  echo "<script>alert('Anda harus login terlebih dahulu');window.location='../../display/user/login.php';</script>";
+  exit;
+}
 $controller = new EditHomeController();
 $row = $controller->GetAll();
 $controller->update();

@@ -33,6 +33,8 @@ public function getIdFormulir($id_formulir) {
     return null;
   }
 }
+
+
 public function updateSisaKursiJadwal($id_jadwal, $sisa_kursi){
   $sql = "UPDATE jadwal_perjalanan SET sisa_kursi=? WHERE id_jadwal=?";
   $stmt = $this->conn->prepare($sql);
@@ -96,15 +98,17 @@ public function getIdpembayaran($id_pembayaran) {
   }
 
   public function updatePembayaranStatus($id_formulir, $status){
-    $sql = "UPDATE formulir SET status = ? WHERE id_formulir=?";
-    $stmt = $this->conn->prepare($sql);
-    $stmt->bind_param("si",  $status, $id_formulir);
-    if($stmt->execute()){
-        return true;
+    $query = "UPDATE formulir SET status = ? WHERE id_formulir = ?";
+    $stmt = $this->conn->prepare($query);
+    $stmt->bind_param("si", $status, $id_formulir);
+    // eksekusi query dan cek hasilnya
+    if ($stmt->execute()) {
+        return true; // update berhasil
     } else {
-        return false;
+        return false; // update gagal
     }
-  }
+}
+
 
 public function DataBank(){
   $sql = "SELECT * FROM form_pembayaran";

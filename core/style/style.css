@@ -25,7 +25,8 @@ background: #369B9B;
   display: flex;
   width: 100%;
   height: 100vh;
-  background-color: #F6F4F1;
+  background-color: white;
+  justify-content: center;
   z-index: 1;
 }
 .hContainer.login-img{
@@ -130,6 +131,7 @@ ul{
 li{
   display: flex;
   padding-top: -20px;
+  justify-content: flex-start;
 }
 .list-item .login{
   display: flex;
@@ -143,7 +145,7 @@ li{
 
   font-style: normal;
   font-weight: 700;
-  font-size: 2rem;
+  font-size: 30px;
   line-height: 48px;
 }
 .logout{
@@ -165,7 +167,7 @@ li{
   margin-top: 20px;
   font-style: normal;
   font-weight: 700;
-  font-size: 2rem;
+  font-size: 20px;
   line-height: 48px;
 }
 .tentang-kami{
@@ -1653,4 +1655,9 @@ font-style: normal;
 font-weight: 700;
 font-size: 2rem;
 line-height: 4;
+}
+
+.TentangLogout{
+display: block;
+margin-top: 10px
 }

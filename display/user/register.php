@@ -42,8 +42,10 @@
                   <li class="list-item"><a class="fa" href="kontak.html">Kontak</a></li>
                   <li class="list-item"><a class="fa" href="pendaftaran.html">Daftar Haji & Umroh</a></li>
                   <li class="list-item"><a class="fa" href="panduan.html">Panduan</a></li>
+                  <div class="TentangLogout">
                   <li class="list-item"><a class="fa tentang-kami" href="tentang-kami.html">Tentang Kami</a></li>
                   <li class="list-item"><a class="logout" href="#">Logout</a></li>
+                  </div>
               </ul>
           </nav>
              <nav class="wrapper">

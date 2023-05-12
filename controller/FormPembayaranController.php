@@ -60,17 +60,8 @@ class FormPembayaran extends TableJadwal{
       {
         if(isset($_POST['submit'])){
           $id_formulir = $_POST['id_formulir'];
-                $formulir = $this->model->getIdFormulir($id_formulir);
-
-                if ($formulir == null) {
-                  echo "Formulir Tidak Ditemukan";
-                  return;
-                }
-              
-                $id_formulir = $_POST['id_formulir'];
-                $status = $formulir['status'];
-                $_SESSION['id_formulir'] = $id_formulir;
-                
+          $status = $_POST['status'];
+          
                 $update = $this->model->updatePembayaranStatus($id_formulir, $status);
                 if($update){
                   echo "<script>alert('Pembayaran Berhasil')</script>";

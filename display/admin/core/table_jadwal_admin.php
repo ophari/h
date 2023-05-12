@@ -1,6 +1,12 @@
 <?php
 include('../../../connection.php');
 include_once('../../../input/DashboardModel.php');
+session_start();
+if(!isset($_SESSION['id_users']) || $_SESSION['level'] != 'admin') {
+  echo "<script>alert('Anda harus login terlebih dahulu');window.location='../../display/user/login.php';</script>";
+  exit;
+}
+$username = isset($_SESSION['username']) ? $_SESSION['username'] : '';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -85,17 +91,19 @@ include_once('../../../input/DashboardModel.php');
                   <nav class="sidebar">
             <img class="user-logo" src="../../../core/asset/icon-user.png" alt="user-logo" href="../welcome.html"></a>  
               <ul class="nav-list">
-                  <li class="list-item"><a class="login" href="login.html">Login/Daftar</a></li>
+              <li class="list-item"><a class="login" href="#"><?php echo $username; ?></a></li>
                   <li class="list-item"><a class="fa" href="galeri.html">Galeri</a></li>
                   <li class="list-item"><a class="fa" href="kontak.html">Kontak</a></li>
                   <li class="list-item"><a class="fa" href="pendaftaran.html">Daftar Haji & Umroh</a></li>
                   <li class="list-item"><a class="fa" href="dashboard.php">Dashboard</a></li>
-                  <li class="list-item"><a class="fa tentang-kami" href="tentang-kami.html">Tentang Kami</a></li>
-                  <li class="list-item"><a class="logout" href="#">Logout</a></li>
+                  <div class="TentangLogout">
+                <li class="list-item"><a class="fa tentang-kami" href="core/tentang-kami.html">Tentang Kami</a></li>
+                <li class="list-item"><a id="logout-link" class="logout" href="../../controller/logout.php">Logout</a></li>
+                </div>
                 </ul>
           </nav>
         <nav class="wrapper">
-          <a href="../../welcome.hmtl"><img class="img-logo" src="../../../core/asset/LogoItkontamaTravelOrange2022.png" alt="Logo-icon"></a>
+          <a href="../../admin/welcome.php"><img class="img-logo" src="../../../core/asset/LogoItkontamaTravelOrange2022.png" alt="Logo-icon"></a>
             <button class="hamburger">
                 <div class="bar"></div>
             </button>
