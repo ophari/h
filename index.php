@@ -1,10 +1,12 @@
 <?php
-// session_start();
-require_once "display/LinkModelController.php";
-$controller = new EditHomeController;
-$row = $controller->GetAll();
+ require_once "Display/LinkModelController.php";
+   
+    $username = isset($_SESSION['username']) ? $_SESSION['username'] :  '<li class="list-item"><a class="login" href="display/user/login.php">Login/Daftar</a><</li>';
+   
+  $controller = new EditHomeController();
+  // panggil method index() untuk mendapatkan data gambar yang akan diupdate
+  $row = $controller->GetAll();
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,40 +15,61 @@ $row = $controller->GetAll();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Selamat Datang</title>
     <link rel="stylesheet" href="core/style/style.css"/>
+    <link rel="stylesheet" href="core/style/AdminWelcome.css">
 </head>
-<body>                                                                                                                                                                           
+<body>
+<div class="img-container">
+  <div class="img-wrapper">
+    <a href="display/user/form-daftar.php"><img class="center-img" src="../../core/gambar_home/<?php echo $row['gambar']; ?>" alt="Project Image"></a>
+  </div>
+</div>
+
     <main>
-    <div class="hContainer">
-            <a href="display/user/login.html"><img class="mid-img" src="core/gambar_home/<?php echo $row['gambar']?>" alt="ayo daftar"></img></a>
         <nav class="sidebar">
-          <a href="display/user/profile.php"><img class="user-logo" src="core/asset/icon-user.png" alt="user-logo" href="index.html"></a>  
+        <img class="user-logo" src="../../core/asset/icon-user.png" href="welcome.html">
             <ul class="nav-list">
-                <?php
-                if (isset($_SESSION['username'])) {
-                    // tampilkan username di tempat li
-                    echo '<li class="list-item-login">' . $_SESSION['username'] . '</li>';
-                } else {
-                    // tampilkan li "Login/Daftar"
-                    echo '<li class="list-item"><a class="login" href="./display/user/login.php">Login/Daftar</a></li>';
-                }
-                ?>
-                <!-- <li class="list-item"><a class="login" href="./display/user/login.php">Login/Daftar</a></li> -->
+           
+                
+                <li class="list-item"><a class="login" href="#"><?php echo $username; ?></a></li>
+                <li class="list-item"><a class="fa" href="display/user/register.php">Daftar</a></li>
                 <li class="list-item"><a class="fa" href="display/user/galeri.php">Galeri</a></li>
                 <li class="list-item"><a class="fa" href="display/user/kontak.html">Kontak</a></li>
-                <li class="list-item"><a class="fa" href="display/user/pendaftaran.html">Daftar Haji & Umroh</a></li>
-                <li class="list-item"><a class="fa" href="display/user/panduan.html">Panduan</a></li>
-                <li class="list-item"><a class="fa tentang-kami" href="display/user/tentang-kami.html">Tentang Kami</a></li>
-                <li class="list-item"><a class="logout" href="./controller/logout.php">Logout</a></li>
+                <li class="list-item"><a class="fa" href="display/user/pendaftaran.php">Daftar Haji & Umroh</a></li>
+                <div class="TentangLogout">
+                <li class="list-item"><a class="fa tentang-kami" href="core/tentang-kami.html">Tentang Kami</a></li>
+                <li class="list-item"><a id="logout-link" class="logout" href="../../controller/logout.php">Logout</a></li>
+                </div>
               </ul>
         </nav>
         <nav class="wrapper">
-          <a href="index.html"><img class="img-logo" src="core/asset/LogoItkontamaTravelOrange2022.png" alt="Logo-icon"></a>
+          <a href="index.php"><img class="img-logo" src="../../core/asset/LogoItkontamaTravelOrange2022.png" alt="Logo-icon"></a>
             <button class="hamburger">
                 <div class="bar"></div>
             </button>
         </nav>
     </div>
 </main>
-    <script src="core/script/script.js"></script>
+    <script src="../../core/script/script.js"></script>
+    <script>
+        $(document).ready(function(){
+    $(".navbar .nav-link").on('click', function(event) {
+
+        if (this.hash !== "") {
+
+            event.preventDefault();
+
+            var hash = this.hash;
+
+            $('html, body').animate({
+                scrollTop: $(hash).offset().top
+            }, 700, function(){
+                window.location.hash = hash;
+            });
+        } 
+    });
+}); 
+    </script>
+
+
 </body>
 </html>

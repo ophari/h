@@ -1,6 +1,6 @@
 <?php
 require "../../LinkModelController.php";
-session_start();
+$username = isset($_SESSION['username']) ? $_SESSION['username'] : '';
 if(!isset($_SESSION['id_users']) || $_SESSION['level'] != 'admin') {
   echo "<script>alert('Anda harus login terlebih dahulu');window.location='../../display/user/login.php';</script>";
   exit;

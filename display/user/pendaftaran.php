@@ -1,3 +1,7 @@
+<?php
+session_start();
+$username = isset($_SESSION['username']) ? $_SESSION['username'] :  '<li class="list-item"><a class="login" href="login.php">Login/Daftar</a></li>';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Selamat Datang</title>
     <link rel="stylesheet" href="../../core/style/style.css"/>
+    <link rel="stylesheet" href="../../core/style/AdminWelcome.css">
 </head>
 <body>
     <main>
@@ -33,16 +38,20 @@
                 </div>
             </div>
           </div> 
-        <nav class="sidebar">
-          <a href="profile.php"><img class="user-logo" src="../../core/asset/icon-user.png" alt="user-logo" href="../../index.php"></a>  
+          <nav class="sidebar">
+        <img class="user-logo" src="../../core/asset/icon-user.png" href="welcome.html">
             <ul class="nav-list">
-                <li class="list-item"><a class="login" href="login.php">Login/Daftar</a></li>
-                <li class="list-item"><a class="fa" href="galeri.html">Galeri</a></li>
+           
+                
+                <li class="list-item"><a class="login" href="#"><?php echo $username; ?></a></li>
+                <li class="list-item"><a class="fa" href="display/user/register.php">Daftar</a></li>
+                <li class="list-item"><a class="fa" href="galeri.php">Galeri</a></li>
                 <li class="list-item"><a class="fa" href="kontak.html">Kontak</a></li>
-                <li class="list-item"><a class="fa" href="pendaftaran.html">Daftar Haji & Umroh</a></li>
-                <li class="list-item"><a class="fa" href="panduan.html">Panduan</a></li>
-                <li class="list-item"><a class="fa tentang-kami" href="tentang-kami.html">Tentang Kami</a></li>
-                <li class="list-item"><a class="logout" href="#">Logout</a></li>
+                <li class="list-item"><a class="fa" href="pendaftaran.php">Daftar Haji & Umroh</a></li>
+                <div class="TentangLogout">
+                <li class="list-item"><a class="fa tentang-kami" href="core/tentang-kami.html">Tentang Kami</a></li>
+                <li class="list-item"><a id="logout-link" class="logout" href="../../controller/logout.php">Logout</a></li>
+                </div>
               </ul>
         </nav>
         <nav class="wrapper">

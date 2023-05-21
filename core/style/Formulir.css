@@ -167,7 +167,7 @@ li{
   margin-top: 20px;
   font-style: normal;
   font-weight: 700;
-  font-size: 2rem;
+  font-size: 20px;
   line-height: 48px;
 }
 .tentang-kami{
@@ -1639,3 +1639,6 @@ line-height: 4;
     display: block;
     margin: -98px 761px;
 }
+
+
+

@@ -1,11 +1,10 @@
 <?php
-// session_start();
 require_once("../../LinkModelController.php");
-session_start();
 if(!isset($_SESSION['id_users']) || $_SESSION['level'] != 'admin') {
   echo "<script>alert('Anda harus login terlebih dahulu');window.location='../../display/user/login.php';</script>";
   exit;
 }
+$username = isset($_SESSION['username']) ? $_SESSION['username'] : '';
 $formulir = new admin();
 $update = new UpdateController();
 $update->Update();
